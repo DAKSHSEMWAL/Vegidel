@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Vegidel</string>
+    <string name="okay">Okay</string>
+    <string name="ok">Ok</string>
+    <string name="login">Log In</string>
+    <string name="welcome_to_vegidel">Welcome to Vegidel</string>
+    <string name="signup">Sign Up</string>
+</resources>

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "176135706328",
+    "firebase_url": "https://vegidel-6771e.firebaseio.com",
+    "project_id": "vegidel-6771e",
+    "storage_bucket": "vegidel-6771e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:176135706328:android:2da0c3c776241c1bd529ad",
+        "android_client_info": {
+          "package_name": "app.kurosaki.developer.vegidel"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "176135706328-1rbdtsmborhf1msghsvae64acgbp9om2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBkBdTkikCX2u-ZCloZAozLc-tJ1bkLMvk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "176135706328-1rbdtsmborhf1msghsvae64acgbp9om2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

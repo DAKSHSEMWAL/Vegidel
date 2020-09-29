@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#15DED3</color>
+    <color name="colorPrimaryDark">#20B2AA</color>
+    <color name="colorAccent">#15DED3</color>
+
+
+    <color name="EasternBlue">#20B2AA</color>
+    <color name="BrightTurquoise">#15DED3</color>
+    <color name="White">#ffffff</color>
+    <color name="Black">#000000</color>
+    <color name="DoveGrey">#707070</color>
+
+
+</resources>
