@@ -3,6 +3,6 @@
     <string name="okay">Okay</string>
     <string name="ok">Ok</string>
     <string name="login">Log In</string>
-    <string name="welcome_to_vegidel">Welcome to Vegidel</string>
+    <string name="welcome_to_vegidel">Welcome to <b>Vegidel</b></string>
     <string name="signup">Sign Up</string>
 </resources>
