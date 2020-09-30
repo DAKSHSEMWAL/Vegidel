@@ -3,6 +3,7 @@ package app.kurosaki.developer.vegidel.ui.activities;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import app.kurosaki.developer.vegidel.R;
@@ -22,5 +23,11 @@ public class WelcomeActivity extends BaseActivity {
     }
 
     private void initView() {
+        binding.login.setOnClickListener(v->{
+            startActivity(new Intent(mContext,LoginActivity.class));
+        });
+        binding.signup.setOnClickListener(v->{
+            startActivity(new Intent(mContext,SignUpActivity.class));
+        });
     }
 }

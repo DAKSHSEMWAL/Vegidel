@@ -5,4 +5,26 @@
     <string name="login">Log In</string>
     <string name="welcome_to_vegidel">Welcome to <b>Vegidel</b></string>
     <string name="signup">Sign Up</string>
+    <string name="email">Email</string>
+    <string name="logina">Login</string>
+    <string name="password">Password</string>
+    <string name="don_t_have_an_acoount_sign_up">Don’t have an account ? Sign Up</string>
+    <string name="forgot_pasword">Forgot Pasword ?</string>
+    <string name="signupa">Singup</string>
+    <string name="already_have_an_account_sign_in">Already have an account ? Sign in</string>
+    <string name="title_notifications">Notification</string>
+    <string name="about">About</string>
+    <string name="profile">Profile</string>
+    <string name="logout">Logout</string>
+    <string name="Home">Home</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="dairy">Dairy</string>
+    <string name="product">Products</string>
+    <string name="fruit_and_vegetable">Fruit And Vegetable</string>
+    <string name="bakery_and_grocery_n_comming_soon">Bakery and Grocery\n(Comming soon)</string>
+    <string name="cart">Cart</string>
+    <string name="do_you_want_to_logout">Do You Want To Logout?</string>
+    <string name="cancel">Cancel</string>
+    <string name="yes">Continue</string>
 </resources>

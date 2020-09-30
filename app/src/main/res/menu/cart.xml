@@ -1,0 +1,11 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- add the following item to your menu.xml -->
+
+    <item
+        android:id="@+id/ic_group"
+        android:title="@string/cart"
+        app:actionLayout="@layout/notification_badge"
+        app:showAsAction="always" />
+</menu>
