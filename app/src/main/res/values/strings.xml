@@ -5,7 +5,7 @@
     <string name="login">Log In</string>
     <string name="welcome_to_vegidel">Welcome to <b>Vegidel</b></string>
     <string name="signup">Sign Up</string>
-    <string name="email">Email</string>
+    <string name="email">*Email</string>
     <string name="logina">Login</string>
     <string name="password">Password</string>
     <string name="don_t_have_an_acoount_sign_up">Don’t have an account ? Sign Up</string>
@@ -27,10 +27,10 @@
     <string name="do_you_want_to_logout">Do You Want To Logout?</string>
     <string name="cancel">Cancel</string>
     <string name="yes">Continue</string>
-    <string name="location">Location</string>
-    <string name="customer_type">Customer Type</string>
-    <string name="phone">Phone</string>
-    <string name="fullname">Full Name</string>
+    <string name="location">*Location</string>
+    <string name="customer_type">*Customer Type</string>
+    <string name="phone">*Mobile</string>
+    <string name="fullname">*Full Name</string>
     <string name="prev">Prev</string>
     <string name="next">Next</string>
     <string-array name="location">
@@ -43,6 +43,12 @@
         <item>Hotel</item>
         <item>Vegetable</item>
     </string-array>
+    <string-array name="kyctype">
+        <item>PAN</item>
+        <item>Aadhar</item>
+        <item>Passport</item>
+        <item>Driving License</item>
+    </string-array>
 
     <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyBkBdTkikCX2u-ZCloZAozLc-tJ1bkLMvk</string>
     <string name="pick_location">Pin Location</string>
@@ -52,5 +58,15 @@
     <string name="city">City</string>
     <string name="pincode">Pincode</string>
     <string name="invoice_address_is_also_a_delivery_address">Invoice address is also a delivery address</string>
+    <string name="legal_documents">Legal Documents</string>
+    <string name="gst_pan_aadhar_pasasport_driving_license_nfiles_are_mandatory_in_jpg_png_jpeg_format">(GST,(PAN/Aadhar/Pasasport/Driving License) files are\nmandatory in jpg,png,jpeg format.)</string>
+    <string name="gst">GST</string>
+    <string name="nofilechoosen">No file chosen</string>
+    <string name="choose_file">Choose file</string>
+    <string name="selected_kyc_document_s_number">Selected KYC Document\'s Number</string>
+    <string name="select_file">Select File</string>
+    <string name="submit">Submit</string>
+    <string name="person_of_correspondence">Person of Correspondence</string>
+    <string name="kyc_documents">*KYC Documents</string>
 
 </resources>

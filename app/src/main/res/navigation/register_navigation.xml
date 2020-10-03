@@ -6,7 +6,7 @@
     app:startDestination="@+id/register1">
     <fragment
         android:id="@+id/register1"
-        android:name="app.kurosaki.developer.vegidel.ui.fragments.FillUserDataFragment"
+        android:name="app.kurosaki.developer.vegidel.ui.fragments.FillUserDataFormFragment"
         android:label="User Data"
         tools:layout="@layout/fragment_form1">
         <action
@@ -23,5 +23,17 @@
         <action
             android:id="@+id/action_registerform_to_register1"
             app:destination="@id/register1" />
+        <action
+            android:id="@+id/action_registerform_to_registerform3"
+            app:destination="@id/registerform3" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerform3"
+        android:name="app.kurosaki.developer.vegidel.ui.fragments.FillUserDataForm3Fragment"
+        android:label="User Data"
+        tools:layout="@layout/fragment_form3">
+        <action
+            android:id="@+id/action_registerform3_to_registerform"
+            app:destination="@id/registerform" />
     </fragment>
 </navigation>

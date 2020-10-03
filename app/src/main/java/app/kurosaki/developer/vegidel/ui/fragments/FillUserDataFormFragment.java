@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 
 import androidx.annotation.NonNull;
@@ -16,17 +15,15 @@ import androidx.navigation.Navigation;
 
 import com.marcok.stepprogressbar.StepProgressBar;
 
-import java.io.File;
-
 import app.kurosaki.developer.vegidel.R;
 import app.kurosaki.developer.vegidel.core.BaseFragment;
 import app.kurosaki.developer.vegidel.databinding.FragmentForm1Binding;
 import app.kurosaki.developer.vegidel.ui.activities.SignUpActivity;
 
-public class FillUserDataFragment extends BaseFragment implements View.OnClickListener {
+public class FillUserDataFormFragment extends BaseFragment implements View.OnClickListener {
 
     FragmentForm1Binding binding;
-    private static FillUserDataFragment devicesFragment;
+    private static FillUserDataFormFragment devicesFragment;
     private LOADER_TYPE loader_type = LOADER_TYPE.NORMAL;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -46,10 +43,10 @@ public class FillUserDataFragment extends BaseFragment implements View.OnClickLi
 
     }
 
-    public FillUserDataFragment getInstance() {
+    public FillUserDataFormFragment getInstance() {
 
         if (devicesFragment == null)
-            devicesFragment = new FillUserDataFragment();
+            devicesFragment = new FillUserDataFormFragment();
         return devicesFragment;
 
     }
@@ -65,10 +62,11 @@ public class FillUserDataFragment extends BaseFragment implements View.OnClickLi
         if (getActivity() instanceof SignUpActivity) {
             StepProgressBar stepProgressBar = ((SignUpActivity) getActivity()).findViewById(R.id.stepProgressBar);
             ((SignUpActivity) getActivity()).binding.prev.setVisibility(View.INVISIBLE);
+            ((SignUpActivity) getActivity()).binding.next.setVisibility(View.VISIBLE);
             stepProgressBar.setCurrentProgressDot(0);
             ((SignUpActivity) getActivity()).binding.next.setOnClickListener(v->{
                 NavController navController = Navigation.findNavController(mContext, R.id.nav_host_fragment1);
-                navController.navigate(FillUserDataFragmentDirections.actionRegister1ToRegisterform());
+                navController.navigate(FillUserDataFormFragmentDirections.actionRegister1ToRegisterform());
             });
         }
 

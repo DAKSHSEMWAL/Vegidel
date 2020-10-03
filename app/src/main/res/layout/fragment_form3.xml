@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scrollable"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:fillViewport="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <TextView
+                    android:id="@+id/title"
+                    style="@style/H616Pt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_19sdp"
+                    android:layout_marginTop="@dimen/_19sdp"
+                    android:layout_marginEnd="@dimen/_19sdp"
+                    android:text="@string/legal_documents"
+                    android:textColor="@color/EasternBlue"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/title1"
+                    android:textSize="@dimen/_10sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_19sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:layout_marginEnd="@dimen/_19sdp"
+                    android:text="@string/gst_pan_aadhar_pasasport_driving_license_nfiles_are_mandatory_in_jpg_png_jpeg_format"
+                    android:textColor="@color/Tundora"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/title" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/gstlay"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_19sdp"
+                    android:layout_marginTop="@dimen/_19sdp"
+                    android:layout_marginEnd="@dimen/_19sdp"
+                    android:hint="@string/gst"
+                    app:boxStrokeColor="@color/SilverChallice"
+                    app:hintTextColor="@color/SilverChallice"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/title1">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/gst"
+                        style="@style/Body214Pt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/segoe"
+                        android:inputType="text"
+                        android:textColor="@color/Tundora"
+                        android:textColorHint="@color/SilverChallice"
+                        android:typeface="normal" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Button
+                    android:id="@+id/choosefile"
+                    style="@style/Body116Pt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_19sdp"
+                    android:layout_marginEnd="@dimen/_19sdp"
+                    android:layout_marginTop="@dimen/_37sdp"
+                    android:background="@drawable/primarybutton"
+                    android:fontFamily="@font/segoe"
+                    android:text="@string/choose_file"
+                    android:textAllCaps="false"
+                    android:textColor="@color/White"
+                    app:layout_constraintEnd_toStartOf="@id/documentchoose"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/gstlay" />
+
+
+                <TextView
+                    android:id="@+id/documentchoose"
+                    style="@style/H616Pt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:layout_marginEnd="@dimen/_19sdp"
+                    android:text="@string/nofilechoosen"
+                    android:textColor="@color/EasternBlue"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/choosefile"
+                    app:layout_constraintTop_toTopOf="@id/choosefile"
+                    app:layout_constraintBottom_toBottomOf="@id/choosefile"/>
+
+
+                <TextView
+                    android:id="@+id/title4"
+                    style="@style/H616Pt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_19sdp"
+                    android:layout_marginTop="@dimen/_19sdp"
+                    android:layout_marginEnd="@dimen/_19sdp"
+                    android:text="@string/kyc_documents"
+                    android:textColor="@color/EasternBlue"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/choosefile" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/selectfile"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_19sdp"
+                    android:layout_marginTop="@dimen/_19sdp"
+                    android:layout_marginEnd="@dimen/_19sdp"
+                    android:hint="@string/select_file"
+                    android:theme="@style/Theme.MaterialComponents.Light"
+                    app:boxStrokeColor="@color/SilverChallice"
+                    app:hintTextColor="@color/SilverChallice"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/title4">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/selectfiledropdown"
+                        style="@style/Body116Pt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:enabled="false"
+                        android:inputType="none"
+                        android:paddingStart="@dimen/_5sdp"
+                        android:paddingTop="@dimen/_10sdp"
+                        android:paddingEnd="@dimen/_5sdp"
+                        android:paddingBottom="@dimen/_10sdp"
+                        android:textColor="@color/Tundora" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/kycnumlay"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_19sdp"
+                    android:layout_marginTop="@dimen/_19sdp"
+                    android:layout_marginEnd="@dimen/_19sdp"
+                    android:hint="@string/selected_kyc_document_s_number"
+                    app:boxStrokeColor="@color/SilverChallice"
+                    app:hintTextColor="@color/SilverChallice"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/selectfile">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/kycnum"
+                        style="@style/Body214Pt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/segoe"
+                        android:inputType="text"
+                        android:textColor="@color/Tundora"
+                        android:textColorHint="@color/SilverChallice"
+                        android:typeface="normal" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/title3"
+                    style="@style/H616Pt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_19sdp"
+                    android:layout_marginTop="@dimen/_19sdp"
+                    android:layout_marginEnd="@dimen/_19sdp"
+                    android:text="@string/person_of_correspondence"
+                    android:textColor="@color/EasternBlue"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/kycnumlay" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/emaillay"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_19sdp"
+                    android:layout_marginTop="@dimen/_19sdp"
+                    android:layout_marginEnd="@dimen/_19sdp"
+                    android:hint="@string/email"
+                    app:boxStrokeColor="@color/SilverChallice"
+                    app:hintTextColor="@color/SilverChallice"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/title3">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/email"
+                        style="@style/Body214Pt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/segoe"
+                        android:inputType="textEmailAddress"
+                        android:textColor="@color/Tundora"
+                        android:textColorHint="@color/SilverChallice"
+                        android:typeface="normal" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/namelay"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_19sdp"
+                    android:layout_marginTop="@dimen/_19sdp"
+                    android:layout_marginEnd="@dimen/_19sdp"
+                    android:hint="@string/fullname"
+                    app:boxStrokeColor="@color/SilverChallice"
+                    app:hintTextColor="@color/SilverChallice"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/emaillay">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/name"
+                        style="@style/Body214Pt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/segoe"
+                        android:inputType="textEmailAddress"
+                        android:textColor="@color/Tundora"
+                        android:textColorHint="@color/SilverChallice"
+                        android:typeface="normal" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/phonelay"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_19sdp"
+                    android:layout_marginTop="@dimen/_19sdp"
+                    android:layout_marginEnd="@dimen/_19sdp"
+                    android:hint="@string/phone"
+                    app:boxStrokeColor="@color/SilverChallice"
+                    app:hintTextColor="@color/SilverChallice"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/namelay">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/phone"
+                        style="@style/Body214Pt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/segoe"
+                        android:inputType="phone"
+                        android:textColor="@color/Tundora"
+                        android:textColorHint="@color/SilverChallice"
+                        android:typeface="normal" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Button
+                    android:id="@+id/sumbit"
+                    style="@style/Body116Pt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_19sdp"
+                    android:layout_marginEnd="@dimen/_19sdp"
+                    android:layout_marginBottom="@dimen/_19sdp"
+                    android:layout_marginTop="@dimen/_37sdp"
+                    android:background="@drawable/primarybutton"
+                    android:fontFamily="@font/segoe"
+                    android:text="@string/submit"
+                    android:textAllCaps="false"
+                    android:textColor="@color/White"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/phonelay"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
