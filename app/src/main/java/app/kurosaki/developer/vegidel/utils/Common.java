@@ -57,6 +57,7 @@ import java.util.regex.Pattern;
 
 import app.kurosaki.developer.vegidel.R;
 import app.kurosaki.developer.vegidel.interfaces.Constants;
+import app.kurosaki.developer.vegidel.model.CartData;
 import app.kurosaki.developer.vegidel.model.Variant;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
@@ -73,6 +74,7 @@ public class Common implements Constants {
     }
 
     public static void setLitrevariants() {
+        litrevariants.clear();
         litrevariants.add(new Variant("1 litre","90"));
         litrevariants.add(new Variant("1/2 litre","45"));
     }
@@ -82,6 +84,7 @@ public class Common implements Constants {
     }
 
     public static void setWeightvariants() {
+        weightvariants.clear();
         weightvariants.add(new Variant("1 litre","90"));
         weightvariants.add(new Variant("1/2 litre","45"));
     }
@@ -91,16 +94,11 @@ public class Common implements Constants {
     }
 
     public static void setDozenvariants() {
+        dozenvariants.clear();
         dozenvariants.add(new Variant("1 dozen","90"));
         dozenvariants.add(new Variant("1/2 dozen","45"));
     }
 
-    /**
-     * method to check empty edit text
-     *
-     * @param text text to check
-     * @return empty or not
-     */
     public static boolean validateEditText(String text) {
         return !TextUtils.isEmpty(text) && text.trim().length() > 0;
     }
@@ -138,12 +136,6 @@ public class Common implements Constants {
 
     }
 
-    /**
-     * method to check whether email is valid or not
-     *
-     * @param email email to check
-     * @return valid or not
-     */
     public static boolean isValidEmail(String email) {
         return !TextUtils.isEmpty(email) && android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
@@ -152,43 +144,14 @@ public class Common implements Constants {
         return android.util.Patterns.PHONE.matcher(phone).matches();
     }
 
-    /**
-     * is password valid
-     *
-     * @param password password to check
-     * @return valid or not
-     */
     public static boolean isValidPassword1(String password) {
         return !TextUtils.isEmpty(password) && password.length() >= 8;
     }
 
-    /**
-     * get unique id of the device
-     *
-     * @param ctx context
-     * @return device id
-     */
     public static String deviceId(@NotNull Context ctx) {
         return Settings.Secure.getString(ctx.getContentResolver(), Settings.Secure.ANDROID_ID);
     }
 
-    /*public static void registerFCM(@NotNull final SharedPref sp, Activity context) {
-        if (sp.getString(USER_PUSH_TOKEN) == null || sp.getString(USER_PUSH_TOKEN).trim().equalsIgnoreCase("")) {
-            FirebaseInstanceId.getInstance().getInstanceId()
-                    .addOnSuccessListener(context, instanceIdResult -> {
-                        Log.e("instanceIdResult: ", instanceIdResult.getToken());
-                        sp.setString(USER_PUSH_TOKEN, instanceIdResult.getToken());
-                    });
-        }
-    }*/
-
-    /**
-     * method to set toolbar with back
-     *
-     * @param ctx   context
-     * @param title title
-     * @param value show icon or not
-     */
     public static void setToolbarWithBackAndTitle(Context ctx, String title, Boolean value, int backResource) {
         Toolbar toolbar = ((AppCompatActivity) ctx).findViewById(R.id.toolbar);
         ((AppCompatActivity) ctx).setSupportActionBar(toolbar);
@@ -417,5 +380,17 @@ public class Common implements Constants {
             drawable.draw(canvas);
         view.draw(canvas);
         return bitmap;
+    }
+
+    public static ArrayList<CartData> getCart(@NotNull SharedPref sp) {
+        String userString = sp.getString(CART);
+        if (validateEditText(userString)) {
+            Gson gson = new Gson();
+            Type baseType = new TypeToken<ArrayList<CartData>>() {
+            }.getType();
+
+            return gson.fromJson(userString, baseType);
+        } else
+            return new ArrayList<>();
     }
 }

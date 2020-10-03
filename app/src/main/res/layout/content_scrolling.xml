@@ -14,17 +14,28 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+
+            <TextView
+                android:id="@+id/productname"
+                style="@style/H424Pt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:fontFamily="@font/segoe_bold"
+                android:textColor="@color/EasternBlue"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
                 android:id="@+id/selectquantity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_12sdp"
-                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_14sdp"
                 android:text="@string/select_quantity"
-                app:layout_constraintBottom_toBottomOf="@id/subtract"
-                app:layout_constraintEnd_toStartOf="@id/add"
-                app:layout_constraintStart_toEndOf="@id/subtract"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/productname" />
 
             <ImageView
                 android:id="@+id/subtract"
@@ -49,6 +60,7 @@
                 app:layout_constraintStart_toEndOf="@id/subtract"
                 app:layout_constraintTop_toTopOf="@id/subtract" />
 
+
             <ImageView
                 android:id="@+id/add"
                 android:layout_width="wrap_content"
@@ -59,25 +71,39 @@
                 app:layout_constraintStart_toEndOf="@id/quantity"
                 app:layout_constraintTop_toTopOf="@id/quantity" />
 
+            <TextView
+                android:id="@+id/productprice"
+                style="@style/H424Pt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_18sdp"
+                android:fontFamily="@font/segoe_bold"
+                android:textColor="@color/Merlot"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/subtract" />
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerView"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_marginEnd="@dimen/_12sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/subtract"/>
+                app:layout_constraintTop_toBottomOf="@id/productprice" />
 
             <TextView
                 android:id="@+id/noproduct"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:gravity="center"
                 android:text="@string/no_products"
                 android:textAlignment="center"
-                android:gravity="center"
                 android:visibility="gone"
-                android:layout_marginTop="@dimen/_12sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

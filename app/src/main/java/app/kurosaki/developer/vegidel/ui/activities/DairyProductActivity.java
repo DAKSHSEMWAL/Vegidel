@@ -41,7 +41,6 @@ public class DairyProductActivity extends BaseActivity implements View.OnClickLi
     @Override
     protected void onResume() {
         super.onResume();
-        co=sp.getInt(BADGECOUNT);
         invalidateOptionsMenu();
     }
 
@@ -51,11 +50,13 @@ public class DairyProductActivity extends BaseActivity implements View.OnClickLi
         dairyData.add(new ProductData("https://images.pexels.com/photos/3212808/pexels-photo-3212808.jpeg", "Yogurt", "60",Common.getWeightvariants()));
         dairyData.add(new ProductData("https://images.pexels.com/photos/3821250/pexels-photo-3821250.jpeg", "Butter", "70",Common.getWeightvariants()));
         dairyData.add(new ProductData("https://images.pexels.com/photos/1435706/pexels-photo-1435706.jpeg", "Milk", "80",Common.getLitrevariants()));
-        dairyData.add(new ProductData("https://images.pexels.com/photos/1435706/pexels-photo-1435706.jpeg", "Milk", "80",Common.getLitrevariants()));
         dairyData.add(new ProductData("https://images.pexels.com/photos/4109943/pexels-photo-4109943.jpeg", "Cheese", "70",Common.getWeightvariants()));
         dairyData.add(new ProductData("https://images.pexels.com/photos/3212808/pexels-photo-3212808.jpeg", "Yogurt", "60",Common.getWeightvariants()));
         dairyData.add(new ProductData("https://images.pexels.com/photos/3821250/pexels-photo-3821250.jpeg", "Butter", "70",Common.getWeightvariants()));
         dairyData.add(new ProductData("https://images.pexels.com/photos/1435706/pexels-photo-1435706.jpeg", "Milk", "80",Common.getLitrevariants()));
+        dairyData.add(new ProductData("https://images.pexels.com/photos/4109943/pexels-photo-4109943.jpeg", "Cheese", "70",Common.getWeightvariants()));
+        dairyData.add(new ProductData("https://images.pexels.com/photos/3212808/pexels-photo-3212808.jpeg", "Yogurt", "60",Common.getWeightvariants()));
+        dairyData.add(new ProductData("https://images.pexels.com/photos/3821250/pexels-photo-3821250.jpeg", "Butter", "70",Common.getWeightvariants()));
         setAdapter();
     }
 
@@ -75,13 +76,12 @@ public class DairyProductActivity extends BaseActivity implements View.OnClickLi
                     intent.putExtra("model",model);
                     startActivity(intent);
                 });
+        setAdapter();
 
     }
 
     private void initView() {
-        co=sp.getInt(BADGECOUNT);
         invalidateOptionsMenu();
-
         Common.setToolbarWithBackAndTitle(mContext, "Dairy Products", false, R.drawable.ic_arrow);
         binding.mToolbar.toolbar.setNavigationOnClickListener(v -> {
             onBackPressed();
@@ -127,19 +127,16 @@ public class DairyProductActivity extends BaseActivity implements View.OnClickLi
             }
             setCount();
             rootView.setOnClickListener(v->{
-                co=0;
-                setCount();
-                sp.setInt(BADGECOUNT,co);
-                showToast("HI");
-                textView.setVisibility(View.INVISIBLE);
+                Intent intent = new Intent(mContext,CartActivity.class);
+                startActivity(intent);
             });
         }
         return super.onCreateOptionsMenu(menu);
     }
 
     public void setCount() {
-        if (co > 9999) {
-            textView.setText(String.format(Locale.getDefault(), "%d+", 9999));
+        if (co > 20) {
+            textView.setText(String.format(Locale.getDefault(), "%d+", 20));
         } else {
             textView.setText(String.format(Locale.getDefault(), "%d", co));
         }

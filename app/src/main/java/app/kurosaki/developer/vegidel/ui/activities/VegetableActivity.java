@@ -76,6 +76,7 @@ public class VegetableActivity extends BaseActivity implements View.OnClickListe
                     intent.putExtra("model",model);
                     startActivity(intent);
                 });
+        setAdapter();
 
     }
 
@@ -127,11 +128,8 @@ public class VegetableActivity extends BaseActivity implements View.OnClickListe
             }
             setCount();
             rootView.setOnClickListener(v->{
-                co=0;
-                setCount();
-                sp.setInt(BADGECOUNT,co);
-                showToast("HI");
-                textView.setVisibility(View.INVISIBLE);
+                Intent intent = new Intent(mContext,CartActivity.class);
+                startActivity(intent);
             });
         }
         return super.onCreateOptionsMenu(menu);

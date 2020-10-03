@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/White"
-        tools:context=".ui.activities.VegetableActivity">
+        tools:context=".ui.activities.CartActivity">
 
         <include
             android:id="@+id/mToolbar"
@@ -24,19 +24,29 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/mToolbar" />
+
+        <ImageView
+            android:id="@+id/btnCart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_carts"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
         <TextView
             android:id="@+id/noproduct"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="@string/no_products"
             android:textAlignment="center"
             android:gravity="center"
-            android:visibility="gone"
+            style="@style/Body214Pt"
+            android:fontFamily="@font/segoe_bold"
             android:layout_marginTop="@dimen/_12sdp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/mToolbar" />
+            app:layout_constraintTop_toBottomOf="@id/btnCart" />
 
         <include
             android:id="@+id/layoutLoader"

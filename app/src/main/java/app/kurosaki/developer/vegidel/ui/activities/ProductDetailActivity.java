@@ -11,18 +11,24 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import androidx.databinding.DataBindingUtil;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.bumptech.glide.Glide;
+import com.google.gson.reflect.TypeToken;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.Locale;
 
 import app.kurosaki.developer.vegidel.R;
-import app.kurosaki.developer.vegidel.adapters.ProductsAdapter;
 import app.kurosaki.developer.vegidel.adapters.RadioAdapter;
 import app.kurosaki.developer.vegidel.core.BaseActivity;
 import app.kurosaki.developer.vegidel.databinding.ActivityProductDetailBinding;
+import app.kurosaki.developer.vegidel.interfaces.Constants;
+import app.kurosaki.developer.vegidel.model.CartData;
 import app.kurosaki.developer.vegidel.model.ProductData;
 import app.kurosaki.developer.vegidel.utils.Common;
 
@@ -31,9 +37,10 @@ public class ProductDetailActivity extends BaseActivity implements View.OnClickL
     ActivityProductDetailBinding binding;
     String title, image;
     TextView textView;
-    int c = 0, co = 0;
+    int c = 0, co = 0, pos = 0;
     ProductData productData;
     RadioAdapter radioAdapter;
+    ArrayList<CartData> cartData = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,8 +69,11 @@ public class ProductDetailActivity extends BaseActivity implements View.OnClickL
         binding.content.recyclerView.setAdapter(radioAdapter);
         radioAdapter.SetOnItemClickListener(
                 (view, itemPosition, model) -> {
+                    pos = itemPosition;
+                    binding.content.productprice.setText(String.format(Locale.getDefault(), getString(R.string.symbol), model.getPrice()));
                 });
-
+        radioAdapter.mSelectedItem = 0;
+        binding.content.productprice.setText(String.format(Locale.getDefault(), getString(R.string.symbol), productData.getVariants().get(pos).getPrice()));
         setAdapter();
     }
 
@@ -74,15 +84,18 @@ public class ProductDetailActivity extends BaseActivity implements View.OnClickL
     }
 
     private void initView() {
-        co = sp.getInt(BADGECOUNT);
+        invalidateOptionsMenu();
+        cartData.addAll(Common.getCart(sp));
         if (getIntent() != null) {
             productData = (ProductData) getIntent().getSerializableExtra("model");
         }
         if (productData != null) {
-            Log.e("Model",productData.toString());
+            Log.e("Model", productData.toString());
             Common.setToolbarWithBackAndTitle(mContext, productData.getName(), false, R.drawable.ic_arrow);
             Glide.with(this).load(productData.getImage()).placeholder(R.drawable.backgrounsplash).into(binding.imageview);
             binding.collapsing.setTitle(productData.getName());
+            binding.content.productname.setText(productData.getName());
+            binding.content.productprice.setText(String.format(Locale.getDefault(), getString(R.string.symbol), productData.getPrice()));
         }
         binding.toolbar.setNavigationOnClickListener(v -> {
             onBackPressed();
@@ -112,12 +125,12 @@ public class ProductDetailActivity extends BaseActivity implements View.OnClickL
                 textView.setVisibility(View.INVISIBLE);
             } else {
                 textView.setVisibility(View.VISIBLE);
+                sp.setInt(BADGECOUNT,co);
+                invalidateOptionsMenu();
+                cartData.add(new CartData(productData,c,pos));
+                sp.setString(CART,gson.toJson(cartData));
             }
-            sp.setInt(BADGECOUNT, co);
-            c = 0;
-            binding.content.subtract.setVisibility(View.INVISIBLE);
-            binding.content.quantity.setText(String.format(Locale.getDefault(), "%d", c));
-            setCount();
+
         }
     }
 
@@ -135,11 +148,8 @@ public class ProductDetailActivity extends BaseActivity implements View.OnClickL
                 textView.setVisibility(View.VISIBLE);
             }
             rootView.setOnClickListener(v -> {
-                co = 0;
-                setCount();
-                sp.setInt(BADGECOUNT, co);
-                showToast("HI");
-                textView.setVisibility(View.INVISIBLE);
+                    Intent intent = new Intent(mContext, CartActivity.class);
+                    startActivity(intent);
             });
             setCount();
         }

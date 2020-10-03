@@ -37,16 +37,7 @@ public class RadioAdapter extends RecyclerView.Adapter<RadioAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(@NotNull RadioAdapter.ViewHolder viewHolder, final int i) {
         Variant variant = mItems.get(i);
-        String tempString=String.format(Locale.getDefault(),mContext.getString(R.string.symbol),variant.getPrice());
-        String tempString1=String.format("%s\n", variant.getName());
-        SpannableStringBuilder stringBuilder = new SpannableStringBuilder();
-        SpannableString spanString = new SpannableString(tempString);
-        SpannableString spanString1 = new SpannableString(tempString1);
-        spanString1.setSpan(new RelativeSizeSpan(1f), 0,5, 0); // set size
-        spanString.setSpan(new StyleSpan(Typeface.BOLD), 0, spanString.length(), 0);
-        stringBuilder.append(spanString1);
-        stringBuilder.append(spanString);
-        viewHolder.mRadio.setText(stringBuilder);
+        viewHolder.mRadio.setText(variant.getName());
         viewHolder.mRadio.setChecked(i == mSelectedItem);
     }
 

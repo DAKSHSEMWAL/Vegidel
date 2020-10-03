@@ -29,6 +29,7 @@ public interface Constants {
     String TIMELIMIT= "TIMELIMIT";
     String CHECK= "CHECK";
     String BADGECOUNT = "BADGECOUNT";
+    String CART = "CART";
 
 
     /* variables used for crop type*/

@@ -18,10 +18,6 @@ import android.widget.TextView;
 import androidx.core.view.GravityCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -112,20 +108,15 @@ public class DashboardActivity extends BaseActivity implements View.OnClickListe
 
         if (rootView != null) {
             textView = rootView.findViewById(R.id.count);
-            if(co==0)
-            {
+            if (co == 0) {
                 textView.setVisibility(View.INVISIBLE);
-            }
-            else {
+            } else {
                 textView.setVisibility(View.VISIBLE);
             }
             setCount();
-            rootView.setOnClickListener(v->{
-                co=0;
-                setCount();
-                sp.setInt(BADGECOUNT,co);
-                showToast("HI");
-                textView.setVisibility(View.INVISIBLE);
+            rootView.setOnClickListener(v -> {
+                    Intent intent = new Intent(mContext, CartActivity.class);
+                    startActivity(intent);
             });
         }
         return super.onCreateOptionsMenu(menu);
