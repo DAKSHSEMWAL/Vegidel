@@ -59,23 +59,29 @@
                 app:layout_constraintStart_toEndOf="@id/quantity"
                 app:layout_constraintTop_toTopOf="@id/quantity" />
 
-            <Button
-                android:id="@+id/Addtocart"
-                style="@style/Body116Pt"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_19sdp"
-                android:layout_marginEnd="@dimen/_19sdp"
-                android:layout_marginBottom="@dimen/_19sdp"
-                android:background="@drawable/primarybutton"
-                android:fontFamily="@font/segoe"
-                android:text="@string/add_to_cart"
-                android:textAllCaps="false"
-                android:visibility="gone"
-                android:textColor="@color/White"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/_20sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent" />
+                app:layout_constraintTop_toBottomOf="@id/subtract"/>
+
+            <TextView
+                android:id="@+id/noproduct"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:text="@string/no_products"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:visibility="gone"
+                android:layout_marginTop="@dimen/_12sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/subtract" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 </layout>

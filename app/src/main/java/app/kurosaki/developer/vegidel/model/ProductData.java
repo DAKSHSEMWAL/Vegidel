@@ -1,14 +1,19 @@
 package app.kurosaki.developer.vegidel.model;
 
-public class ProductData {
+import java.io.Serializable;
+import java.util.ArrayList;
+
+public class ProductData implements Serializable {
     String image;
     String name;
     String price;
+    ArrayList<Variant> variants;
 
-    public ProductData(String image, String name, String price) {
+    public ProductData(String image, String name, String price, ArrayList<Variant> variants) {
         this.image = image;
         this.name = name;
         this.price = price;
+        this.variants = variants;
     }
 
     public String getImage() {
@@ -33,6 +38,24 @@ public class ProductData {
 
     public void setPrice(String price) {
         this.price = price;
+    }
+
+    public ArrayList<Variant> getVariants() {
+        return variants;
+    }
+
+    public void setVariants(ArrayList<Variant> variants) {
+        this.variants = variants;
+    }
+
+    @Override
+    public String toString() {
+        return "ProductData{" +
+                "image='" + image + '\'' +
+                ", name='" + name + '\'' +
+                ", price='" + price + '\'' +
+                ", variants=" + variants +
+                '}';
     }
 }
 

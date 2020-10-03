@@ -1,4 +1,4 @@
-package app.kurosaki.developer.vegidel.adaoters;
+package app.kurosaki.developer.vegidel.adapters;
 
 
 import android.content.Context;

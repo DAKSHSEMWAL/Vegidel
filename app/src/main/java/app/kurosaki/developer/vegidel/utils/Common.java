@@ -57,13 +57,43 @@ import java.util.regex.Pattern;
 
 import app.kurosaki.developer.vegidel.R;
 import app.kurosaki.developer.vegidel.interfaces.Constants;
+import app.kurosaki.developer.vegidel.model.Variant;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
 
 public class Common implements Constants {
 
     public static Bitmap Photo;
+    public static ArrayList<Variant> litrevariants=new ArrayList<>();
+    public static ArrayList<Variant> weightvariants=new ArrayList<>();
+    public static ArrayList<Variant> dozenvariants=new ArrayList<>();
 
+    public static ArrayList<Variant> getLitrevariants() {
+        return litrevariants;
+    }
+
+    public static void setLitrevariants() {
+        litrevariants.add(new Variant("1 litre","90"));
+        litrevariants.add(new Variant("1/2 litre","45"));
+    }
+
+    public static ArrayList<Variant> getWeightvariants() {
+        return weightvariants;
+    }
+
+    public static void setWeightvariants() {
+        weightvariants.add(new Variant("1 litre","90"));
+        weightvariants.add(new Variant("1/2 litre","45"));
+    }
+
+    public static ArrayList<Variant> getDozenvariants() {
+        return dozenvariants;
+    }
+
+    public static void setDozenvariants() {
+        dozenvariants.add(new Variant("1 dozen","90"));
+        dozenvariants.add(new Variant("1/2 dozen","45"));
+    }
 
     /**
      * method to check empty edit text

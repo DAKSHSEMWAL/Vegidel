@@ -32,6 +32,7 @@ import app.kurosaki.developer.vegidel.R;
 import app.kurosaki.developer.vegidel.core.BaseActivity;
 import app.kurosaki.developer.vegidel.databinding.ActivityDashboardBinding;
 import app.kurosaki.developer.vegidel.databinding.DialogLogoutBinding;
+import app.kurosaki.developer.vegidel.utils.Common;
 
 import static app.kurosaki.developer.vegidel.utils.Common.setToolbarWithBackAndTitle;
 
@@ -55,7 +56,6 @@ public class DashboardActivity extends BaseActivity implements View.OnClickListe
     @Override
     protected void onResume() {
         super.onResume();
-        co=sp.getInt(BADGECOUNT);
         invalidateOptionsMenu();
     }
 
@@ -70,11 +70,14 @@ public class DashboardActivity extends BaseActivity implements View.OnClickListe
 
     private void initView() {
         setToolbarWithBackAndTitle(mContext, "", false, R.drawable.ic_hamburger);
-        co=sp.getInt(BADGECOUNT);
+        invalidateOptionsMenu();
         drawerLayout = binding.drawerLayout;
         binding.contentdash.mToolbar.toolbar.setNavigationOnClickListener(v -> {
             drawerLayout.openDrawer(GravityCompat.START);
         });
+        Common.setDozenvariants();
+        Common.setLitrevariants();
+        Common.setWeightvariants();
     }
 
     @Override
@@ -117,6 +120,13 @@ public class DashboardActivity extends BaseActivity implements View.OnClickListe
                 textView.setVisibility(View.VISIBLE);
             }
             setCount();
+            rootView.setOnClickListener(v->{
+                co=0;
+                setCount();
+                sp.setInt(BADGECOUNT,co);
+                showToast("HI");
+                textView.setVisibility(View.INVISIBLE);
+            });
         }
         return super.onCreateOptionsMenu(menu);
     }
