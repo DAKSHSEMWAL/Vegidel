@@ -25,8 +25,9 @@
             android:id="@+id/image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_42sdp"
-            android:src="@drawable/ic_supermarket"
+            android:layout_marginTop="@dimen/_100sdp"
+            android:src="@drawable/ic_logo"
+            app:tint="@color/EasternBlue"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/top" />
@@ -38,27 +39,28 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_51sdp"
             android:layout_marginEnd="@dimen/_51sdp"
+            android:layout_marginBottom="@dimen/_27sdp"
             android:background="@drawable/primarybutton"
             android:fontFamily="@font/segoe"
             android:text="@string/login"
             android:textAllCaps="false"
             android:textColor="@color/White"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/image" />
+            app:layout_constraintBottom_toTopOf="@id/signup"
+            app:layout_constraintStart_toStartOf="parent"/>
 
         <TextView
             android:id="@+id/signup"
             style="@style/Body116Pt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_27sdp"
+            android:layout_marginBottom="@dimen/_27sdp"
             android:fontFamily="@font/segoe"
             android:text="@string/signup"
             android:textColor="@color/Black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/login" />
+            app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

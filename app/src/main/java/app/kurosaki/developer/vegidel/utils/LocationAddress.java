@@ -23,6 +23,11 @@ public class LocationAddress {
                 Geocoder geocoder = new Geocoder(context, Locale.getDefault());
                 String result = null;
                 String postcode = null;
+                String city = null;
+                String country = null;
+                String state = null;
+                String feature = null;
+
                 try {
                     List<Address> addressList = geocoder.getFromLocation(
                             latitude, longitude, 1);
@@ -32,6 +37,10 @@ public class LocationAddress {
                         StringBuilder sb = new StringBuilder();
                         sb.append(address.getAddressLine(0));
                         postcode = address.getPostalCode();
+                        city=address.getLocality();
+                        state=address.getAdminArea();
+                        feature=address.getFeatureName();
+                        country=address.getCountryName();
                         result = sb.toString();
                         Log.e(TAG, "Successfully Connected");
                     }
@@ -45,6 +54,10 @@ public class LocationAddress {
                         Bundle bundle = new Bundle();
                         bundle.putString("address", result);
                         bundle.putString("postcode", postcode);
+                        bundle.putString("city", city);
+                        bundle.putString("feature", feature);
+                        bundle.putString("state", state);
+                        bundle.putString("country", country);
                         message.setData(bundle);
                     } else {
                         message.what = 1;

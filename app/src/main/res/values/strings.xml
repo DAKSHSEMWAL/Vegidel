@@ -22,9 +22,35 @@
     <string name="dairy">Dairy</string>
     <string name="product">Products</string>
     <string name="fruit_and_vegetable">Fruit And Vegetable</string>
-    <string name="bakery_and_grocery_n_comming_soon">Bakery and Grocery\n(Comming soon)</string>
+    <string name="bakery_and_grocery_n_comming_soon">Bakery and Grocery\n(Coming soon)</string>
     <string name="cart">Cart</string>
     <string name="do_you_want_to_logout">Do You Want To Logout?</string>
     <string name="cancel">Cancel</string>
     <string name="yes">Continue</string>
+    <string name="location">Location</string>
+    <string name="customer_type">Customer Type</string>
+    <string name="phone">Phone</string>
+    <string name="fullname">Full Name</string>
+    <string name="prev">Prev</string>
+    <string name="next">Next</string>
+    <string-array name="location">
+        <item>Home</item>
+        <item>Work</item>
+        <item>Other</item>
+        <item>Custom</item>
+    </string-array>
+    <string-array name="customertype">
+        <item>Hotel</item>
+        <item>Vegetable</item>
+    </string-array>
+
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyBkBdTkikCX2u-ZCloZAozLc-tJ1bkLMvk</string>
+    <string name="pick_location">Pin Location</string>
+    <string name="Continue">Continue</string>
+    <string name="DeliveryAddress">Delivery Address</string>
+    <string name="state">State</string>
+    <string name="city">City</string>
+    <string name="pincode">Pincode</string>
+    <string name="invoice_address_is_also_a_delivery_address">Invoice address is also a delivery address</string>
+
 </resources>

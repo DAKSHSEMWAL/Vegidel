@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scrollable"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:fillViewport="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/namelay"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_19sdp"
+                    android:layout_marginTop="@dimen/_19sdp"
+                    android:layout_marginEnd="@dimen/_19sdp"
+                    android:hint="@string/fullname"
+                    app:boxStrokeColor="@color/SilverChallice"
+                    app:hintTextColor="@color/SilverChallice"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/name"
+                        style="@style/Body214Pt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/segoe"
+                        android:inputType="textEmailAddress"
+                        android:textColor="@color/Tundora"
+                        android:textColorHint="@color/SilverChallice"
+                        android:typeface="normal" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/phonelay"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_19sdp"
+                    android:layout_marginTop="@dimen/_19sdp"
+                    android:layout_marginEnd="@dimen/_19sdp"
+                    android:hint="@string/phone"
+                    app:boxStrokeColor="@color/SilverChallice"
+                    app:hintTextColor="@color/SilverChallice"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/namelay">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/phone"
+                        style="@style/Body214Pt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/segoe"
+                        android:inputType="phone"
+                        android:textColor="@color/Tundora"
+                        android:textColorHint="@color/SilverChallice"
+                        android:typeface="normal" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/passlay"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_19sdp"
+                    android:layout_marginTop="@dimen/_19sdp"
+                    android:layout_marginEnd="@dimen/_19sdp"
+                    android:hint="@string/password"
+                    app:boxStrokeColor="@color/SilverChallice"
+                    app:hintTextColor="@color/SilverChallice"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/phonelay"
+                    app:passwordToggleDrawable="@drawable/ic_eye"
+                    app:passwordToggleEnabled="true">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/password"
+                        style="@style/Body214Pt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/segoe"
+                        android:inputType="textWebPassword"
+                        android:textColor="@color/Tundora"
+                        android:textColorHint="@color/SilverChallice"
+                        android:typeface="normal" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/title"
+                    style="@style/H616Pt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_19sdp"
+                    android:layout_marginTop="@dimen/_19sdp"
+                    android:layout_marginEnd="@dimen/_19sdp"
+                    android:text="@string/DeliveryAddress"
+                    android:textColor="@color/EasternBlue"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/passlay" />
+
+                <TextView
+                    android:id="@+id/location"
+                    style="@style/Body116Pt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_19sdp"
+                    android:layout_marginTop="@dimen/_19sdp"
+                    android:layout_marginEnd="@dimen/_19sdp"
+                    android:background="@drawable/secondarybutton1"
+                    android:hint="@string/pick_location"
+                    android:paddingStart="@dimen/_6sdp"
+                    android:paddingTop="@dimen/_10sdp"
+                    android:paddingEnd="@dimen/_6sdp"
+                    android:paddingBottom="@dimen/_10sdp"
+                    android:textColor="@color/Tundora"
+                    android:textColorHint="@color/SilverChallice"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/title"
+                    app:drawableEndCompat="@drawable/ic_location" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/statelay"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_19sdp"
+                    android:layout_marginTop="@dimen/_19sdp"
+                    android:layout_marginEnd="@dimen/_19sdp"
+                    android:hint="@string/state"
+                    app:boxStrokeColor="@color/SilverChallice"
+                    app:hintTextColor="@color/SilverChallice"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/location">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/state"
+                        style="@style/Body214Pt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/segoe"
+                        android:inputType="text"
+                        android:textColor="@color/Tundora"
+                        android:textColorHint="@color/SilverChallice"
+                        android:typeface="normal" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/citylay"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_19sdp"
+                    android:layout_marginTop="@dimen/_19sdp"
+                    android:layout_marginEnd="@dimen/_19sdp"
+                    android:hint="@string/city"
+                    app:boxStrokeColor="@color/SilverChallice"
+                    app:hintTextColor="@color/SilverChallice"
+                    app:layout_constraintEnd_toStartOf="@id/pincodelay"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/statelay">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/city"
+                        style="@style/Body214Pt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/segoe"
+                        android:inputType="text"
+                        android:textColor="@color/Tundora"
+                        android:textColorHint="@color/SilverChallice"
+                        android:typeface="normal" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/pincodelay"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_19sdp"
+                    android:layout_marginTop="@dimen/_19sdp"
+                    android:layout_marginEnd="@dimen/_19sdp"
+                    android:hint="@string/pincode"
+                    app:boxStrokeColor="@color/SilverChallice"
+                    app:hintTextColor="@color/SilverChallice"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/citylay"
+                    app:layout_constraintTop_toBottomOf="@id/statelay">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/pincode"
+                        style="@style/Body214Pt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/segoe"
+                        android:inputType="textEmailAddress"
+                        android:textColor="@color/Tundora"
+                        android:textColorHint="@color/SilverChallice"
+                        android:typeface="normal" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <CheckBox
+                    android:id="@+id/isdelivery"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_19sdp"
+                    android:layout_marginTop="@dimen/_19sdp"
+                    android:layout_marginEnd="@dimen/_19sdp"
+                    android:textColor="@color/EasternBlue"
+                    android:text="@string/invoice_address_is_also_a_delivery_address"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/citylay"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation1"
+    app:startDestination="@+id/register1">
+    <fragment
+        android:id="@+id/register1"
+        android:name="app.kurosaki.developer.vegidel.ui.fragments.FillUserDataFragment"
+        android:label="User Data"
+        tools:layout="@layout/fragment_form1">
+        <action
+            android:id="@+id/action_register1_to_registerform"
+            app:destination="@id/registerform"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerform"
+        android:name="app.kurosaki.developer.vegidel.ui.fragments.FillUserDataForm2Fragment"
+        android:label="User Data"
+        tools:layout="@layout/fragment_form2">
+        <action
+            android:id="@+id/action_registerform_to_register1"
+            app:destination="@id/register1" />
+    </fragment>
+</navigation>
