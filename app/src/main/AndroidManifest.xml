@@ -13,10 +13,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ui.activities.ProductDetailActivity" />
+        <activity android:name=".ui.activities.VegetableActivity" />
+        <activity android:name=".ui.activities.DairyProductActivity" />
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
-        <activity android:name=".ui.activities.DashboardActivity"/>
+
+        <activity android:name=".ui.activities.DashboardActivity" />
         <activity android:name=".ui.activities.PickAddress" />
         <activity
             android:name=".ui.activities.SignUpActivity"

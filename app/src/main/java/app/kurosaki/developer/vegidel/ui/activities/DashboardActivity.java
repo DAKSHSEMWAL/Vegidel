@@ -67,7 +67,6 @@ public class DashboardActivity extends BaseActivity implements View.OnClickListe
         });
     }
 
-
     @Override
     public void onClick(View view) {
         if (view == binding.tvBack) {
