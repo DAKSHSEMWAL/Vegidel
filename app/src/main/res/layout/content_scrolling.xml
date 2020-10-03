@@ -6,14 +6,76 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:fillViewport="true"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:context=".ui.activities.ScrollingActivity">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/text_margin"
-            android:text="@string/large_text" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
+            <TextView
+                android:id="@+id/selectquantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:text="@string/select_quantity"
+                app:layout_constraintBottom_toBottomOf="@id/subtract"
+                app:layout_constraintEnd_toStartOf="@id/add"
+                app:layout_constraintStart_toEndOf="@id/subtract"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/subtract"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_14sdp"
+                android:src="@drawable/ic_subtract"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toStartOf="@id/quantity"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/selectquantity" />
+
+            <TextView
+                android:id="@+id/quantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:text="@string/_0"
+                app:layout_constraintBottom_toBottomOf="@id/subtract"
+                app:layout_constraintEnd_toStartOf="@id/add"
+                app:layout_constraintStart_toEndOf="@id/subtract"
+                app:layout_constraintTop_toTopOf="@id/subtract" />
+
+            <ImageView
+                android:id="@+id/add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:src="@drawable/ic_add"
+                app:layout_constraintBottom_toBottomOf="@id/quantity"
+                app:layout_constraintStart_toEndOf="@id/quantity"
+                app:layout_constraintTop_toTopOf="@id/quantity" />
+
+            <Button
+                android:id="@+id/Addtocart"
+                style="@style/Body116Pt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_19sdp"
+                android:layout_marginEnd="@dimen/_19sdp"
+                android:layout_marginBottom="@dimen/_19sdp"
+                android:background="@drawable/primarybutton"
+                android:fontFamily="@font/segoe"
+                android:text="@string/add_to_cart"
+                android:textAllCaps="false"
+                android:visibility="gone"
+                android:textColor="@color/White"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 </layout>

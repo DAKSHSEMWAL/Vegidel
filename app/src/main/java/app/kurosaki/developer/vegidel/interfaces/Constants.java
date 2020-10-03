@@ -28,6 +28,7 @@ public interface Constants {
     String VERIFY_OTP_MODEL= "verify_otp_model";
     String TIMELIMIT= "TIMELIMIT";
     String CHECK= "CHECK";
+    String BADGECOUNT = "BADGECOUNT";
 
 
     /* variables used for crop type*/

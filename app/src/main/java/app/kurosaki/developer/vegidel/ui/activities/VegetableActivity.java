@@ -12,6 +12,7 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import app.kurosaki.developer.vegidel.R;
 import app.kurosaki.developer.vegidel.adaoters.ProductsAdapter;
@@ -26,6 +27,7 @@ public class VegetableActivity extends BaseActivity implements View.OnClickListe
     ProductsAdapter productsAdapter;
     ArrayList<ProductData> dairyData = new ArrayList<>();
     TextView textView;
+    int co;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,13 @@ public class VegetableActivity extends BaseActivity implements View.OnClickListe
         initView();
         setEmptyAdapter();
         setData();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        co=sp.getInt(BADGECOUNT);
+        invalidateOptionsMenu();
     }
 
     private void setData() {
@@ -74,6 +83,7 @@ public class VegetableActivity extends BaseActivity implements View.OnClickListe
 
     private void initView() {
 
+        co=sp.getInt(BADGECOUNT);
         Common.setToolbarWithBackAndTitle(mContext, "Dairy Products", false, R.drawable.ic_arrow);
         binding.mToolbar.toolbar.setNavigationOnClickListener(v -> {
             onBackPressed();
@@ -107,11 +117,27 @@ public class VegetableActivity extends BaseActivity implements View.OnClickListe
         getMenuInflater().inflate(R.menu.cart, menu);
         MenuItem menuItem = menu.findItem(R.id.ic_group);
         FrameLayout rootView = (FrameLayout) menuItem.getActionView();
+        co=sp.getInt(BADGECOUNT);
         if (rootView != null) {
             textView = rootView.findViewById(R.id.count);
-            int co = 0;
+            if(co==0)
+            {
+                textView.setVisibility(View.INVISIBLE);
+            }
+            else {
+                textView.setVisibility(View.VISIBLE);
+            }
+            setCount();
         }
         return super.onCreateOptionsMenu(menu);
+    }
+
+    public void setCount() {
+        if (co > 20) {
+            textView.setText(String.format(Locale.getDefault(), "%d+", 20));
+        } else {
+            textView.setText(String.format(Locale.getDefault(), "%d", co));
+        }
     }
 
 }

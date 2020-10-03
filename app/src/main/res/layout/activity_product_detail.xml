@@ -86,6 +86,7 @@
             app:pressedTranslationZ="12dp"
             app:useCompatPadding="true" />
 
-        <include layout="@layout/content_scrolling" />
+        <include
+            android:id="@+id/content" layout="@layout/content_scrolling" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

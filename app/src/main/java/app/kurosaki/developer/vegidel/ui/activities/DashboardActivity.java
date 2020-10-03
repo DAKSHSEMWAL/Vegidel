@@ -25,6 +25,7 @@ import androidx.navigation.ui.NavigationUI;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Locale;
 import java.util.Objects;
 
 import app.kurosaki.developer.vegidel.R;
@@ -41,6 +42,7 @@ public class DashboardActivity extends BaseActivity implements View.OnClickListe
 
     DrawerLayout drawerLayout;
     TextView textView;
+    int co;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +50,13 @@ public class DashboardActivity extends BaseActivity implements View.OnClickListe
         binding = DataBindingUtil.setContentView(mContext, R.layout.activity_dashboard);
         initView();
         implementListeners();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        co=sp.getInt(BADGECOUNT);
+        invalidateOptionsMenu();
     }
 
     private void implementListeners() {
@@ -61,6 +70,7 @@ public class DashboardActivity extends BaseActivity implements View.OnClickListe
 
     private void initView() {
         setToolbarWithBackAndTitle(mContext, "", false, R.drawable.ic_hamburger);
+        co=sp.getInt(BADGECOUNT);
         drawerLayout = binding.drawerLayout;
         binding.contentdash.mToolbar.toolbar.setNavigationOnClickListener(v -> {
             drawerLayout.openDrawer(GravityCompat.START);
@@ -96,11 +106,27 @@ public class DashboardActivity extends BaseActivity implements View.OnClickListe
         getMenuInflater().inflate(R.menu.cart, menu);
         MenuItem menuItem = menu.findItem(R.id.ic_group);
         FrameLayout rootView = (FrameLayout) menuItem.getActionView();
+
         if (rootView != null) {
             textView = rootView.findViewById(R.id.count);
-            int co = 0;
+            if(co==0)
+            {
+                textView.setVisibility(View.INVISIBLE);
+            }
+            else {
+                textView.setVisibility(View.VISIBLE);
+            }
+            setCount();
         }
         return super.onCreateOptionsMenu(menu);
+    }
+
+    public void setCount() {
+        if (co > 20) {
+            textView.setText(String.format(Locale.getDefault(), "%d+", 20));
+        } else {
+            textView.setText(String.format(Locale.getDefault(), "%d", co));
+        }
     }
 
     private void showLogOutDialog() {

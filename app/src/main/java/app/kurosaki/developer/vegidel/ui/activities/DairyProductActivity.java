@@ -12,11 +12,13 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.GridLayoutManager;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import app.kurosaki.developer.vegidel.R;
 import app.kurosaki.developer.vegidel.adaoters.ProductsAdapter;
 import app.kurosaki.developer.vegidel.core.BaseActivity;
 import app.kurosaki.developer.vegidel.databinding.ActivityDairyProductBinding;
+import app.kurosaki.developer.vegidel.interfaces.Constants;
 import app.kurosaki.developer.vegidel.model.ProductData;
 import app.kurosaki.developer.vegidel.utils.Common;
 
@@ -26,6 +28,7 @@ public class DairyProductActivity extends BaseActivity implements View.OnClickLi
     ProductsAdapter productsAdapter;
     ArrayList<ProductData> dairyData = new ArrayList<>();
     TextView textView;
+    int co;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +37,13 @@ public class DairyProductActivity extends BaseActivity implements View.OnClickLi
         initView();
         setEmptyAdapter();
         setData();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        co=sp.getInt(BADGECOUNT);
+        invalidateOptionsMenu();
     }
 
     private void setData() {
@@ -73,7 +83,7 @@ public class DairyProductActivity extends BaseActivity implements View.OnClickLi
     }
 
     private void initView() {
-
+        co=sp.getInt(BADGECOUNT);
         Common.setToolbarWithBackAndTitle(mContext, "Dairy Products", false, R.drawable.ic_arrow);
         binding.mToolbar.toolbar.setNavigationOnClickListener(v -> {
             onBackPressed();
@@ -107,11 +117,27 @@ public class DairyProductActivity extends BaseActivity implements View.OnClickLi
         getMenuInflater().inflate(R.menu.cart, menu);
         MenuItem menuItem = menu.findItem(R.id.ic_group);
         FrameLayout rootView = (FrameLayout) menuItem.getActionView();
+        co=sp.getInt(BADGECOUNT);
         if (rootView != null) {
             textView = rootView.findViewById(R.id.count);
-            int co = 0;
+            if(co==0)
+            {
+                textView.setVisibility(View.INVISIBLE);
+            }
+            else {
+                textView.setVisibility(View.VISIBLE);
+            }
+            setCount();
         }
         return super.onCreateOptionsMenu(menu);
+    }
+
+    public void setCount() {
+        if (co > 9999) {
+            textView.setText(String.format(Locale.getDefault(), "%d+", 9999));
+        } else {
+            textView.setText(String.format(Locale.getDefault(), "%d", co));
+        }
     }
 
 }
