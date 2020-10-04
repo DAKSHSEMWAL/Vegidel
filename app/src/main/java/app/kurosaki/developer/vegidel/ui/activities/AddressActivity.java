@@ -40,7 +40,7 @@ public class AddressActivity extends BaseActivity {
     }
 
     private void initView() {
-        Common.setToolbarWithBackAndTitle(mContext, "Selcet Address", false, R.drawable.ic_arrow);
+        Common.setToolbarWithBackAndTitle(mContext, "Select Address", false, R.drawable.ic_arrow);
         binding.mToolbar.toolbar.setNavigationOnClickListener(v-> onBackPressed());
         address.addAll(Common.getAddresses(sp));
         checkOutModel=Common.getCheckout(sp);

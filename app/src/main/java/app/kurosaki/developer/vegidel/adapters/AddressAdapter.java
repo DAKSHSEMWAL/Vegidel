@@ -1,6 +1,11 @@
 package app.kurosaki.developer.vegidel.adapters;
 
 import android.content.Context;
+import android.graphics.Typeface;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
+import android.text.style.StyleSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,7 +35,12 @@ public class AddressAdapter extends RecyclerView.Adapter<AddressAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NotNull AddressAdapter.ViewHolder viewHolder, final int i) {
         String string = mItems.get(i);
-        viewHolder.mRadio.setText(string);
+        SpannableString txtSpannable= new SpannableString(string);
+        StyleSpan boldSpan = new StyleSpan(Typeface.BOLD);
+        StyleSpan boldSpan1 = new StyleSpan(Typeface.BOLD);
+        txtSpannable.setSpan(boldSpan, 0, string.indexOf("\n"), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        txtSpannable.setSpan(boldSpan1, string.indexOf("Phone"), string.indexOf(":"), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        viewHolder.mRadio.setText(txtSpannable);
         viewHolder.mRadio.setChecked(i == mSelectedItem);
     }
 

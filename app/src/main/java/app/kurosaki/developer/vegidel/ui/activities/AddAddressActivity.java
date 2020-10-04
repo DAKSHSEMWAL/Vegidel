@@ -29,9 +29,9 @@ public class AddAddressActivity extends BaseActivity {
 
         binding.proceed.setOnClickListener(v->{
             String add = binding.name.getText().toString().trim() + "\n" +
-                         binding.address.getText().toString().trim() + "\n" +
-                         binding.city.getText().toString().trim() + "\n" +
-                         binding.phonecode.getText().toString().trim() + "\n" +
+                         binding.address.getText().toString().trim() + ",\n" +
+                         binding.city.getText().toString().trim() + "," +
+                         binding.phonecode.getText().toString().trim() + "\nPhone: " +
                          binding.phone.getText().toString().trim() ;
             address.add(add);
             sp.setString(ADDRESS, gson.toJson(address));

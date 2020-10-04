@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/White"
@@ -40,7 +40,7 @@
 
         <TextView
             android:id="@+id/address"
-            style="@style/Caption12Pt"
+            style="@style/Body214Pt"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_19sdp"
@@ -52,6 +52,161 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/productlist" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:layout_marginStart="@dimen/_19sdp"
+            android:layout_marginEnd="@dimen/_19sdp"
+            android:background="@color/SilverChallice"
+            app:layout_constraintTop_toBottomOf="@id/address"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/subtotal"
+            style="@style/Body214Pt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_19sdp"
+            android:layout_marginTop="@dimen/_18sdp"
+            android:fontFamily="@font/segoe"
+            android:textColor="@color/DoveGrey"
+            android:text="@string/subtotal"
+            app:layout_constraintEnd_toStartOf="@id/subtotalamount"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider" />
+
+        <TextView
+            android:id="@+id/subtotalamount"
+            style="@style/Body214Pt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_18sdp"
+            android:layout_marginEnd="@dimen/_19sdp"
+            android:fontFamily="@font/segoe"
+            android:textAlignment="textEnd"
+            android:textColor="@color/Tuna"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/subtotal"
+            app:layout_constraintTop_toBottomOf="@id/divider" />
+
+        <TextView
+            android:id="@+id/discount"
+            style="@style/Body214Pt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_19sdp"
+            android:layout_marginTop="@dimen/_18sdp"
+            android:fontFamily="@font/segoe"
+            android:textColor="@color/DoveGrey"
+            android:text="@string/discount"
+            app:layout_constraintEnd_toStartOf="@id/discountamount"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/subtotal" />
+
+        <TextView
+            android:id="@+id/discountamount"
+            style="@style/Body214Pt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_18sdp"
+            android:layout_marginEnd="@dimen/_19sdp"
+            android:fontFamily="@font/segoe"
+            android:textAlignment="textEnd"
+            android:textColor="@color/Tuna"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/subtotal"
+            app:layout_constraintTop_toBottomOf="@id/subtotalamount" />
+
+        <TextView
+            android:id="@+id/shipping"
+            style="@style/Body214Pt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_19sdp"
+            android:layout_marginTop="@dimen/_18sdp"
+            android:fontFamily="@font/segoe"
+            android:textColor="@color/DoveGrey"
+            android:text="@string/shipping"
+            app:layout_constraintEnd_toStartOf="@id/shippingcharge"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/discount" />
+
+        <TextView
+            android:id="@+id/shippingcharge"
+            style="@style/Body214Pt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_18sdp"
+            android:layout_marginEnd="@dimen/_19sdp"
+            android:fontFamily="@font/segoe"
+            android:textAlignment="textEnd"
+            android:textColor="@color/Tuna"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/shipping"
+            app:layout_constraintTop_toBottomOf="@id/discount" />
+
+        <View
+            android:id="@+id/divider1"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:layout_marginStart="@dimen/_19sdp"
+            android:layout_marginEnd="@dimen/_19sdp"
+            android:background="@color/SilverChallice"
+            app:layout_constraintTop_toBottomOf="@id/shipping"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/total"
+            style="@style/Body214Pt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_19sdp"
+            android:layout_marginTop="@dimen/_18sdp"
+            android:fontFamily="@font/segoe"
+            android:textColor="@color/Tuna"
+            android:text="@string/total"
+            app:layout_constraintEnd_toStartOf="@id/totalamount"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider1" />
+
+        <TextView
+            android:id="@+id/totalamount"
+            style="@style/Body214Pt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_18sdp"
+            android:layout_marginEnd="@dimen/_19sdp"
+            android:fontFamily="@font/segoe"
+            android:textAlignment="textEnd"
+            android:textColor="@color/Tuna"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/total"
+            app:layout_constraintTop_toBottomOf="@id/divider1" />
+
+        <Button
+            android:id="@+id/buy"
+            style="@style/Body116Pt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_19sdp"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:layout_marginEnd="@dimen/_19sdp"
+            android:layout_marginBottom="@dimen/_12sdp"
+            android:background="@drawable/primarybutton"
+            android:fontFamily="@font/segoe"
+            android:text="@string/buy"
+            android:textAllCaps="false"
+            android:textColor="@color/White"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

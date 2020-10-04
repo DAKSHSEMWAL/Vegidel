@@ -11,7 +11,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/_5sdp"
-        android:fontFamily="@font/segoe_bold"
+        android:fontFamily="@font/segoe"
         android:textColor="@color/DoveGrey"
         android:textSize="@dimen/_12sdp"
         app:layout_constraintBottom_toBottomOf="parent"

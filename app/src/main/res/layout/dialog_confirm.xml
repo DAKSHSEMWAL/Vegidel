@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/dialog"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/White">
+
+
+        <ImageView
+            android:id="@+id/tv_take_photo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:src="@drawable/ic_confirm"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/tv_subtitle"
+            style="@style/H328Pt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_take_photo"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:fontFamily="@font/segoe"
+            android:gravity="center"
+            android:paddingStart="@dimen/_10sdp"
+            android:paddingEnd="@dimen/_10sdp"
+            android:text="Confirmation"
+            android:textAlignment="center"
+            android:textColor="@color/Tundora"
+            android:textSize="@dimen/_14sdp" />
+
+        <TextView
+            android:id="@+id/tv_subtitle1"
+            style="@style/Caption12Pt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_subtitle"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:fontFamily="@font/segoe"
+            android:gravity="center"
+            android:paddingStart="@dimen/_10sdp"
+            android:paddingEnd="@dimen/_10sdp"
+            android:text="@string/you_have_successfully_n_completed_your_payment_procedure"
+            android:textAlignment="center"
+            android:textColor="@color/DoveGrey"
+            android:textSize="@dimen/_14sdp" />
+
+        <Button
+            android:id="@+id/buy"
+            style="@style/Body116Pt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="@dimen/_19sdp"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:layout_marginEnd="@dimen/_19sdp"
+            android:layout_marginBottom="@dimen/_12sdp"
+            android:background="@drawable/primarybutton"
+            android:fontFamily="@font/segoe"
+            android:text="@string/back_to_home"
+            android:textAllCaps="false"
+            android:textColor="@color/White" />
+
+    </RelativeLayout>
+</layout>

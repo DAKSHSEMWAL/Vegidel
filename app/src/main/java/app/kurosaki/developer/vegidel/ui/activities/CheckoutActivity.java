@@ -3,10 +3,15 @@ package app.kurosaki.developer.vegidel.ui.activities;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.StyleSpan;
 import android.view.View;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import app.kurosaki.developer.vegidel.R;
 import app.kurosaki.developer.vegidel.adapters.CartAdapter;
@@ -39,7 +44,17 @@ public class CheckoutActivity extends BaseActivity {
         checkOutModel = Common.getCheckout(sp);
         cartData.clear();
         cartData.addAll(checkOutModel.getCartData());
-        binding.address.setText(checkOutModel.getAddress());
+        SpannableString txtSpannable= new SpannableString(checkOutModel.getAddress());
+        StyleSpan boldSpan = new StyleSpan(Typeface.BOLD);
+        StyleSpan boldSpan1 = new StyleSpan(Typeface.BOLD);
+        txtSpannable.setSpan(boldSpan, 0, checkOutModel.getAddress().indexOf("\n"), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        txtSpannable.setSpan(boldSpan1, checkOutModel.getAddress().indexOf("Phone"), checkOutModel.getAddress().indexOf(":"), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        binding.address.setText(txtSpannable);
+        binding.subtotalamount.setText(String.format(Locale.getDefault(),getString(R.string.symbol3), checkOutModel.getTotal()));
+        binding.shippingcharge.setText(String.format(Locale.getDefault(), getString(R.string.symbol4), 10));
+        binding.discountamount.setText(String.format("%s%%", String.format(Locale.getDefault(), getString(R.string.symbol4), 5)));
+        int afterDiscount = checkOutModel.getTotal() - (checkOutModel.getTotal() * 10 / 100);
+        binding.totalamount.setText(String.format(Locale.getDefault(),getString(R.string.symbol3), afterDiscount));
     }
 
     private void setEmptyAdapter() {
