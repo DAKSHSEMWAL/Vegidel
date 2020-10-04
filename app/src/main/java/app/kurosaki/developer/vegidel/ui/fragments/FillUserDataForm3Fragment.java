@@ -66,9 +66,17 @@ public class FillUserDataForm3Fragment extends BaseFragment implements View.OnCl
     private void initialize() {
         if (getActivity() instanceof SignUpActivity) {
             StepProgressBar stepProgressBar = ((SignUpActivity) getActivity()).findViewById(R.id.stepProgressBar);
+
             ((SignUpActivity) getActivity()).binding.next.setVisibility(View.INVISIBLE);
+
             stepProgressBar.setCurrentProgressDot(2);
+
             ((SignUpActivity) getActivity()).binding.prev.setOnClickListener(v -> {
+                NavController navController = Navigation.findNavController(mContext, R.id.nav_host_fragment1);
+                navController.navigate(FillUserDataForm3FragmentDirections.actionRegisterform3ToRegisterform());
+            });
+
+            ((SignUpActivity) getActivity()).binding.mToolbar.toolbar.setNavigationOnClickListener(v->{
                 NavController navController = Navigation.findNavController(mContext, R.id.nav_host_fragment1);
                 navController.navigate(FillUserDataForm3FragmentDirections.actionRegisterform3ToRegisterform());
             });

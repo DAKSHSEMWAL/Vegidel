@@ -68,6 +68,9 @@ public class FillUserDataFormFragment extends BaseFragment implements View.OnCli
                 NavController navController = Navigation.findNavController(mContext, R.id.nav_host_fragment1);
                 navController.navigate(FillUserDataFormFragmentDirections.actionRegister1ToRegisterform());
             });
+            ((SignUpActivity) getActivity()).binding.mToolbar.toolbar.setNavigationOnClickListener(v->{
+                (getActivity()).onBackPressed();
+            });
         }
 
         ArrayAdapter<CharSequence> arrayAdapter= ArrayAdapter.createFromResource(mContext, R.array.location,R.layout.dropdown_menu_popup_item);

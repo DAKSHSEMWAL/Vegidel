@@ -26,10 +26,12 @@ public class AddressActivity extends BaseActivity {
         binding = DataBindingUtil.setContentView(mContext, R.layout.activity_address);
         initView();
         setEmptyAdapter();
+        setData();
     }
 
     private void initView() {
         Common.setToolbarWithBackAndTitle(mContext, "", false, R.drawable.ic_arrow);
+        binding.mToolbar.toolbar.setNavigationOnClickListener(v->{onBackPressed();});
     }
 
     private void setEmptyAdapter() {
@@ -42,14 +44,35 @@ public class AddressActivity extends BaseActivity {
 
 
         binding.recyclerView.setAdapter(addressAdapter);
-        addressAdapter.SetOnItemClickListener(
-                (view, itemPosition, model) -> {
+        addressAdapter.SetOnItemClickListener(new AddressAdapter.OnItemClickListener() {
+            @Override
+            public void onOptionClick(View view, int itemPosition, String model) {
 
-                });
+            }
 
+            @Override
+            public void onDelete(View view, int itemPosition, String model) {
+                address.remove(itemPosition);
+                addressAdapter.notifyItemChanged(itemPosition);
+                setAdapter();
+            }
+        });
+        addressAdapter.mSelectedItem = 0;
         setAdapter();
 
     }
+
+    private void setData() {
+        address.add("Shewrapara, Mirpur, Dhaka-1216 \nHouse no: 938 \nRoad no: 9");
+        address.add("Chatkhil, Noakhali \nHouse no: 22 \nRoad no: 7");
+        address.add("Shewrapara, Mirpur, Dhaka-1216 \nHouse no: 938 \nRoad no: 9");
+        address.add("Chatkhil, Noakhali \nHouse no: 22 \nRoad no: 7");
+        address.add("Shewrapara, Mirpur, Dhaka-1216 \nHouse no: 938 \nRoad no: 9");
+        address.add("Chatkhil, Noakhali \nHouse no: 22 \nRoad no: 7");
+        sp.setString(ADDRESS, gson.toJson(address));
+        setAdapter();
+    }
+
 
     private void setVisibilities(int noData, int recyclerView) {
 

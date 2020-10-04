@@ -21,11 +21,11 @@
         android:label="User Data"
         tools:layout="@layout/fragment_form2">
         <action
-            android:id="@+id/action_registerform_to_register1"
-            app:destination="@id/register1" />
-        <action
             android:id="@+id/action_registerform_to_registerform3"
             app:destination="@id/registerform3" />
+        <action
+            android:id="@+id/action_registerform_to_register1"
+            app:destination="@id/register1" />
     </fragment>
     <fragment
         android:id="@+id/registerform3"

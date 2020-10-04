@@ -30,6 +30,7 @@ public interface Constants {
     String CHECK= "CHECK";
     String BADGECOUNT = "BADGECOUNT";
     String CART = "CART";
+    String ADDRESS = "ADDRESS";
 
 
     /* variables used for crop type*/
