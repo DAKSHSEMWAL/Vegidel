@@ -87,5 +87,4 @@ dependencies {
 
     implementation 'com.marcok.stepprogressbar:stepprogressbar:1.0.1'
 
-
 }

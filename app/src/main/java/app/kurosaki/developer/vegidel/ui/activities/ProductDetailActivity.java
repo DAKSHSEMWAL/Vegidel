@@ -54,6 +54,15 @@ public class ProductDetailActivity extends BaseActivity implements View.OnClickL
     @Override
     protected void onResume() {
         super.onResume();
+        c=0;
+        cartData.clear();
+        if(Common.getCart(sp).size()!=0) {
+            cartData.addAll(Common.getCart(sp));
+        }
+        binding.content.quantity.setText(String.format(Locale.getDefault(), "%d", c));
+        binding.content.subtract.setVisibility(View.INVISIBLE);
+        radioAdapter.mSelectedItem = 0;
+        setAdapter();
         invalidateOptionsMenu();
     }
 
@@ -85,7 +94,12 @@ public class ProductDetailActivity extends BaseActivity implements View.OnClickL
 
     private void initView() {
         invalidateOptionsMenu();
-        cartData.addAll(Common.getCart(sp));
+        if(Common.getCart(sp).size()!=0) {
+            cartData.addAll(Common.getCart(sp));
+        }
+        else {
+            cartData.clear();
+        }
         if (getIntent() != null) {
             productData = (ProductData) getIntent().getSerializableExtra("model");
         }
@@ -127,10 +141,14 @@ public class ProductDetailActivity extends BaseActivity implements View.OnClickL
                 textView.setVisibility(View.VISIBLE);
                 sp.setInt(BADGECOUNT,co);
                 invalidateOptionsMenu();
+            }
+            if(c!=0)
+            {
                 cartData.add(new CartData(productData,c,pos));
                 sp.setString(CART,gson.toJson(cartData));
             }
-
+            c=0;
+            binding.content.quantity.setText(String.format(Locale.getDefault(), "%d", c));
         }
     }
 

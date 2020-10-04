@@ -2,6 +2,10 @@ package app.kurosaki.developer.vegidel.adapters;
 
 
 import android.content.Context;
+import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
+import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,10 +20,10 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Locale;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import app.kurosaki.developer.vegidel.R;
 import app.kurosaki.developer.vegidel.databinding.ItemCartitemBinding;
-import app.kurosaki.developer.vegidel.databinding.ItemProductBinding;
 import app.kurosaki.developer.vegidel.model.CartData;
 import app.kurosaki.developer.vegidel.utils.SharedPref;
 
@@ -55,16 +59,50 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.SingleItemRowH
 
         CartData singleItem = itemsList.get(i);
         holder.itemRowBinding.productimage.setText(singleItem.getProductData().getName());
-        holder.itemRowBinding.quantity.setText(String.format(Locale.getDefault(),"%d", singleItem.getQuantity()));
-        Log.e("Price",String.format(Locale.getDefault(),mContext.getString(R.string.symbol),singleItem.getProductData().getVariants().get(singleItem.getPos()).getPrice()));
-        holder.itemRowBinding.productprice.setText(String.format(Locale.getDefault(),mContext.getString(R.string.symbol),singleItem.getProductData().getVariants().get(singleItem.getPos()).getPrice()));
+        holder.itemRowBinding.quantity.setText(String.format(Locale.getDefault(), "%d", singleItem.getQuantity()));
+        if (singleItem.getQuantity() == 0) {
+            holder.itemRowBinding.subtract.setVisibility(View.INVISIBLE);
+        } else {
+            holder.itemRowBinding.subtract.setVisibility(View.VISIBLE);
+        }
+        String priceper=String.format(Locale.getDefault(), mContext.getString(R.string.symbol1), singleItem.getProductData().getVariants().get(singleItem.getPos()).getPrice(),singleItem.getProductData().getVariants().get(singleItem.getPos()).getName());
+        String totalprice=String.format(Locale.getDefault(), mContext.getString(R.string.symbol2), (Integer.parseInt(singleItem.getProductData().getVariants().get(singleItem.getPos()).getPrice())*singleItem.getQuantity()));
+
+        SpannableStringBuilder stringBuilder = new SpannableStringBuilder();
+        SpannableString spannableString = new SpannableString(priceper);
+        SpannableString spannableString1 = new SpannableString(totalprice);
+        ForegroundColorSpan foregroundColorSpan = new ForegroundColorSpan(mContext.getColor(R.color.Merlot));
+        spannableString1.setSpan(foregroundColorSpan, 0, totalprice.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        stringBuilder.append(spannableString);
+        stringBuilder.append(spannableString1);
+
+        holder.itemRowBinding.productprice.setText(stringBuilder);
+
         Glide.with(mContext).load(singleItem.getProductData().getImage()).placeholder(R.drawable.backgrounsplash).into(holder.itemRowBinding.imageview);
         holder.itemRowBinding.getRoot().setOnClickListener(v -> {
             mItemClickListener.onOptionClick(holder.itemRowBinding.getRoot(), i, singleItem);
         });
-        holder.itemRowBinding.cancel.setOnClickListener(c->{
+
+        holder.itemRowBinding.cancel.setOnClickListener(c -> {
             mItemClickListener.onDelete(holder.itemRowBinding.getRoot(), i, singleItem);
         });
+
+        AtomicInteger c = new AtomicInteger(singleItem.getQuantity());
+
+        holder.itemRowBinding.add.setOnClickListener(v -> {
+            singleItem.setQuantity(c.incrementAndGet());
+            mItemClickListener.onAdd(holder.itemRowBinding.getRoot(), i, singleItem);
+        });
+
+        holder.itemRowBinding.subtract.setOnClickListener(v -> {
+            if (c.intValue() > 0) {
+                singleItem.setQuantity(c.decrementAndGet());
+            } else {
+                singleItem.setQuantity(0);
+            }
+            mItemClickListener.onRemoved(holder.itemRowBinding.getRoot(), i, singleItem);
+        });
+
     }
 
     @Override
@@ -78,7 +116,12 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.SingleItemRowH
 
     public interface OnItemClickListener {
         void onOptionClick(View view, int itemPosition, CartData model);
+
         void onDelete(View view, int itemPosition, CartData model);
+
+        void onAdd(View view, int itemPosition, CartData model);
+
+        void onRemoved(View view, int itemPosition, CartData model);
     }
 
     public static class SingleItemRowHolder extends RecyclerView.ViewHolder {

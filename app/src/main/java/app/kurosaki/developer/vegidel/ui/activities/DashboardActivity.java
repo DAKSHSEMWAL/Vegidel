@@ -105,7 +105,7 @@ public class DashboardActivity extends BaseActivity implements View.OnClickListe
         getMenuInflater().inflate(R.menu.cart, menu);
         MenuItem menuItem = menu.findItem(R.id.ic_group);
         FrameLayout rootView = (FrameLayout) menuItem.getActionView();
-
+        co=sp.getInt(BADGECOUNT);
         if (rootView != null) {
             textView = rootView.findViewById(R.id.count);
             if (co == 0) {

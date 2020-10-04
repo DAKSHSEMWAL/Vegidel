@@ -1,6 +1,7 @@
 package app.kurosaki.developer.vegidel.ui.activities;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import androidx.databinding.DataBindingUtil;
@@ -12,6 +13,7 @@ import app.kurosaki.developer.vegidel.R;
 import app.kurosaki.developer.vegidel.adapters.CartAdapter;
 import app.kurosaki.developer.vegidel.core.BaseActivity;
 import app.kurosaki.developer.vegidel.databinding.ActivityCartBinding;
+import app.kurosaki.developer.vegidel.interfaces.Constants;
 import app.kurosaki.developer.vegidel.model.CartData;
 import app.kurosaki.developer.vegidel.utils.Common;
 
@@ -50,7 +52,42 @@ public class CartActivity extends BaseActivity {
                     @Override
                     public void onDelete(View view, int itemPosition, CartData model) {
                         cartData.remove(itemPosition);
+                        if(cartData.size()!=0) {
+                            sp.setString(CART, gson.toJson(cartData));
+                        }
+                        else {
+                            sp.setString(CART, gson.toJson(cartData));
+                        }
+                        sp.setInt(Constants.BADGECOUNT,sp.getInt(Constants.BADGECOUNT)>=0?(Math.max(sp.getInt(Constants.BADGECOUNT) - model.getQuantity(), 0)):0);
                         cartAdapter.notifyItemRemoved(itemPosition);
+                        setAdapter();
+                    }
+
+                    @Override
+                    public void onAdd(View view, int itemPosition, CartData model) {
+                        cartData.set(itemPosition,model);
+                        sp.setString(CART,gson.toJson(cartData));
+                        sp.setInt(Constants.BADGECOUNT,sp.getInt(Constants.BADGECOUNT) + 1);
+                        setAdapter();
+                    }
+
+                    @Override
+                    public void onRemoved(View view, int itemPosition, CartData model) {
+                        if(cartData.size()!=0) {
+                            if (model.getQuantity() != 0) {
+                                cartData.set(itemPosition, model);
+                                sp.setInt(Constants.BADGECOUNT,sp.getInt(Constants.BADGECOUNT)>=0?(Math.max(sp.getInt(Constants.BADGECOUNT) - 1, 0)):0);
+                            } else {
+                                cartData.remove(model);
+                                sp.setInt(Constants.BADGECOUNT,0);
+                                cartAdapter.notifyItemRemoved(itemPosition);
+                            }
+                        }
+                        else {
+                            sp.setInt(BADGECOUNT,0);
+                            sp.setString(CART,gson.toJson(cartData));
+                        }
+                        sp.setString(CART,gson.toJson(cartData));
                         setAdapter();
                     }
                 });
@@ -70,8 +107,8 @@ public class CartActivity extends BaseActivity {
 
     private void setVisibilities(int noData, int recyclerView) {
 
-        binding.noproduct.setVisibility(noData);
         binding.productlist.setVisibility(recyclerView);
+        binding.noproduct.setVisibility(noData);
         binding.btnCart.setVisibility(noData);
 
     }
@@ -81,9 +118,6 @@ public class CartActivity extends BaseActivity {
             setVisibilities(View.GONE, View.VISIBLE);
             cartAdapter.notifyDataSetChanged();
         } else {
-            sp.setInt(BADGECOUNT,0);
-            cartData.clear();
-            sp.setString(CART,gson.toJson(cartData));
             setVisibilities(View.VISIBLE, View.GONE);
         }
     }

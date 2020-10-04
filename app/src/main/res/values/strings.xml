@@ -70,6 +70,8 @@
     <string name="kyc_documents">*KYC Documents</string>
     <string name="imageview">imageView</string>
     <string name="symbol">₹ %s</string>
+    <string name="symbol1">₹ %s / %s \n\n</string>
+    <string name="symbol2">Total Price: ₹ %d</string>
     <string name="no_products">No Products</string>
     <string name="no_variant">No Variant</string>
     <string name="product_detail">Product Detail</string>
