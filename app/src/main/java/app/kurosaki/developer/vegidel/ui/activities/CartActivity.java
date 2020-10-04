@@ -1,15 +1,25 @@
 package app.kurosaki.developer.vegidel.ui.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.ForegroundColorSpan;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.TextView;
 
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import app.kurosaki.developer.vegidel.R;
+import app.kurosaki.developer.vegidel.adapters.AddressAdapter;
 import app.kurosaki.developer.vegidel.adapters.CartAdapter;
 import app.kurosaki.developer.vegidel.core.BaseActivity;
 import app.kurosaki.developer.vegidel.databinding.ActivityCartBinding;
@@ -61,6 +71,7 @@ public class CartActivity extends BaseActivity {
                         sp.setInt(Constants.BADGECOUNT,sp.getInt(Constants.BADGECOUNT)>=0?(Math.max(sp.getInt(Constants.BADGECOUNT) - model.getQuantity(), 0)):0);
                         cartAdapter.notifyItemRemoved(itemPosition);
                         setAdapter();
+                        invalidateOptionsMenu();
                     }
 
                     @Override
@@ -68,6 +79,7 @@ public class CartActivity extends BaseActivity {
                         cartData.set(itemPosition,model);
                         sp.setString(CART,gson.toJson(cartData));
                         sp.setInt(Constants.BADGECOUNT,sp.getInt(Constants.BADGECOUNT) + 1);
+                        invalidateOptionsMenu();
                         setAdapter();
                     }
 
@@ -88,6 +100,7 @@ public class CartActivity extends BaseActivity {
                             sp.setString(CART,gson.toJson(cartData));
                         }
                         sp.setString(CART,gson.toJson(cartData));
+                        invalidateOptionsMenu();
                         setAdapter();
                     }
                 });
@@ -103,6 +116,10 @@ public class CartActivity extends BaseActivity {
             onBackPressed();
         });
         cartData.addAll(Common.getCart(sp));
+        binding.continues.setOnClickListener(v->{
+            Intent intent = new Intent(mContext, AddressActivity.class);
+            startActivity(intent);
+        });
     }
 
     private void setVisibilities(int noData, int recyclerView) {
@@ -110,6 +127,7 @@ public class CartActivity extends BaseActivity {
         binding.productlist.setVisibility(recyclerView);
         binding.noproduct.setVisibility(noData);
         binding.btnCart.setVisibility(noData);
+        binding.continues.setVisibility(recyclerView);
 
     }
 
@@ -121,4 +139,35 @@ public class CartActivity extends BaseActivity {
             setVisibilities(View.VISIBLE, View.GONE);
         }
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.totalamount, menu);
+        MenuItem menuItem = menu.findItem(R.id.carttotal);
+        FrameLayout rootView = (FrameLayout) menuItem.getActionView();
+        int total=0;
+        if(cartData!=null) {
+            for (CartData cartData : cartData) {
+                total = total + cartData.getQuantity() * Integer.parseInt(cartData.getProductData().getVariants().get(cartData.getPos()).getPrice());
+            }
+        }
+        if (rootView != null) {
+            TextView textView = rootView.findViewById(R.id.count);
+            if(total==0)
+            {
+                textView.setVisibility(View.GONE);
+            }
+            else {
+                textView.setVisibility(View.VISIBLE);
+                String totalprice = String.format(Locale.getDefault(),mContext.getString(R.string.symbol2),total);
+                SpannableString spannableString = new SpannableString(totalprice);
+                ForegroundColorSpan foregroundColorSpan = new ForegroundColorSpan(mContext.getColor(R.color.DoveGrey));
+                spannableString.setSpan(foregroundColorSpan, 0, totalprice.indexOf(":")+1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                textView.setText(spannableString);
+            }
+
+        }
+        return super.onCreateOptionsMenu(menu);
+    }
+
 }

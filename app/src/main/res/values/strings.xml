@@ -73,6 +73,7 @@
     <string name="symbol1">₹ %s / %s \n\n</string>
     <string name="symbol2">Total Price: ₹ %d</string>
     <string name="no_products">No Products</string>
+    <string name="no_address">No Addresss</string>
     <string name="no_variant">No Variant</string>
     <string name="product_detail">Product Detail</string>
     <string name="title_activity_scrolling">ScrollingActivity</string>
@@ -80,5 +81,7 @@
     <string name="_0">0</string>
     <string name="select_quantity">Select Quantity</string>
     <string name="add_to_cart">Add To Cart</string>
+    <string name="proceed_to_checkout">Proceed To Checkout</string>
+    <string name="AddAddress">Add Address</string>
 
 </resources>

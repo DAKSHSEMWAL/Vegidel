@@ -51,6 +51,23 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btnCart" />
 
+        <Button
+            android:id="@+id/continues"
+            style="@style/Body116Pt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_19sdp"
+            android:layout_marginEnd="@dimen/_19sdp"
+            android:layout_marginBottom="@dimen/_37sdp"
+            android:background="@drawable/primarybutton"
+            android:fontFamily="@font/segoe"
+            android:text="@string/Continue"
+            android:textAllCaps="false"
+            android:textColor="@color/White"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
         <include
             android:id="@+id/layoutLoader"
             layout="@layout/layout_loader"
