@@ -58,6 +58,7 @@ import java.util.regex.Pattern;
 import app.kurosaki.developer.vegidel.R;
 import app.kurosaki.developer.vegidel.interfaces.Constants;
 import app.kurosaki.developer.vegidel.model.CartData;
+import app.kurosaki.developer.vegidel.model.CheckOutModel;
 import app.kurosaki.developer.vegidel.model.Variant;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
@@ -393,4 +394,29 @@ public class Common implements Constants {
         } else
             return new ArrayList<>();
     }
+
+    public static CheckOutModel getCheckout(@NotNull SharedPref sp) {
+        String userString = sp.getString(CHECKOUT);
+        if (validateEditText(userString)) {
+            Gson gson = new Gson();
+            Type baseType = new TypeToken<CheckOutModel>() {
+            }.getType();
+
+            return gson.fromJson(userString, baseType);
+        } else
+            return new CheckOutModel();
+    }
+
+    public static ArrayList<String> getAddresses(@NotNull SharedPref sp) {
+        String userString = sp.getString(ADDRESS);
+        if (validateEditText(userString)) {
+            Gson gson = new Gson();
+            Type baseType = new TypeToken<ArrayList<String>>() {
+            }.getType();
+
+            return gson.fromJson(userString, baseType);
+        } else
+            return new ArrayList<>();
+    }
+
 }

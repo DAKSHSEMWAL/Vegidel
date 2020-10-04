@@ -72,7 +72,6 @@
             android:layout_marginBottom="@dimen/_15sdp"
             android:background="@drawable/whitedashedbutton"
             android:drawableStart="@drawable/ic_home"
-            android:drawablePadding="@dimen/_18sdp"
             android:fontFamily="@font/segoe"
             android:padding="@dimen/_12sdp"
             android:text="@string/AddAddress"

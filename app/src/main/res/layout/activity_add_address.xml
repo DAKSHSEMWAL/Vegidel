@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/White"
+        tools:context=".ui.activities.AddAddressActivity">
+
+        <include
+            android:id="@+id/mToolbar"
+            layout="@layout/layout_toolbar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/title"
+            style="@style/H424Pt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_19sdp"
+            android:layout_marginTop="@dimen/_18sdp"
+            android:fontFamily="@font/segoe"
+            android:text="@string/create_address"
+            android:textColor="@color/Tuna"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/mToolbar" />
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/namelay"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_19sdp"
+            android:layout_marginTop="@dimen/_19sdp"
+            android:layout_marginEnd="@dimen/_19sdp"
+            android:hint="@string/name"
+            app:boxStrokeColor="@color/SilverChallice"
+            app:hintTextColor="@color/SilverChallice"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/name"
+                style="@style/Body214Pt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/segoe"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/Tundora"
+                android:textColorHint="@color/SilverChallice"
+                android:typeface="normal" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/addresslay"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_19sdp"
+            android:layout_marginTop="@dimen/_19sdp"
+            android:layout_marginEnd="@dimen/_19sdp"
+            android:hint="@string/address"
+            app:boxStrokeColor="@color/SilverChallice"
+            app:hintTextColor="@color/SilverChallice"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/namelay">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/address"
+                style="@style/Body214Pt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/segoe"
+                android:inputType="textPostalAddress"
+                android:textColor="@color/Tundora"
+                android:textColorHint="@color/SilverChallice"
+                android:typeface="normal" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/citylay"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_19sdp"
+            android:layout_marginTop="@dimen/_19sdp"
+            android:layout_marginEnd="@dimen/_19sdp"
+            android:hint="@string/city"
+            app:boxStrokeColor="@color/SilverChallice"
+            app:hintTextColor="@color/SilverChallice"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/addresslay">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/city"
+                style="@style/Body214Pt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/segoe"
+                android:inputType="textPostalAddress"
+                android:textColor="@color/Tundora"
+                android:textColorHint="@color/SilverChallice"
+                android:typeface="normal" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/phonecodelay"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_19sdp"
+            android:layout_marginTop="@dimen/_19sdp"
+            android:layout_marginEnd="@dimen/_19sdp"
+            android:hint="@string/pincode"
+            app:boxStrokeColor="@color/SilverChallice"
+            app:hintTextColor="@color/SilverChallice"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/citylay">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/phonecode"
+                style="@style/Body214Pt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/segoe"
+                android:inputType="textPostalAddress"
+                android:textColor="@color/Tundora"
+                android:textColorHint="@color/SilverChallice"
+                android:typeface="normal" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/phonelay"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_19sdp"
+            android:layout_marginTop="@dimen/_19sdp"
+            android:layout_marginEnd="@dimen/_19sdp"
+            android:hint="@string/phone1"
+            app:boxStrokeColor="@color/SilverChallice"
+            app:hintTextColor="@color/SilverChallice"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/phonecodelay">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/phone"
+                style="@style/Body214Pt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/segoe"
+                android:inputType="phone"
+                android:textColor="@color/Tundora"
+                android:textColorHint="@color/SilverChallice"
+                android:typeface="normal" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/proceed"
+            style="@style/Body116Pt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_19sdp"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:layout_marginEnd="@dimen/_19sdp"
+            android:layout_marginBottom="@dimen/_12sdp"
+            android:background="@drawable/primarybutton"
+            android:fontFamily="@font/segoe"
+            android:text="@string/AddAddress"
+            android:textAllCaps="false"
+            android:textColor="@color/White"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

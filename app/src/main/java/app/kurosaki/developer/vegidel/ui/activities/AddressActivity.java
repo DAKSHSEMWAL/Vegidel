@@ -1,5 +1,6 @@
 package app.kurosaki.developer.vegidel.ui.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -12,6 +13,7 @@ import app.kurosaki.developer.vegidel.R;
 import app.kurosaki.developer.vegidel.adapters.AddressAdapter;
 import app.kurosaki.developer.vegidel.core.BaseActivity;
 import app.kurosaki.developer.vegidel.databinding.ActivityAddressBinding;
+import app.kurosaki.developer.vegidel.model.CheckOutModel;
 import app.kurosaki.developer.vegidel.utils.Common;
 
 public class AddressActivity extends BaseActivity {
@@ -19,6 +21,7 @@ public class AddressActivity extends BaseActivity {
     ActivityAddressBinding binding;
     AddressAdapter addressAdapter;
     ArrayList<String> address = new ArrayList<>();
+    CheckOutModel checkOutModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,12 +29,31 @@ public class AddressActivity extends BaseActivity {
         binding = DataBindingUtil.setContentView(mContext, R.layout.activity_address);
         initView();
         setEmptyAdapter();
-        setData();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        address.clear();
+        address.addAll(Common.getAddresses(sp));
+        setAdapter();
     }
 
     private void initView() {
-        Common.setToolbarWithBackAndTitle(mContext, "", false, R.drawable.ic_arrow);
-        binding.mToolbar.toolbar.setNavigationOnClickListener(v->{onBackPressed();});
+        Common.setToolbarWithBackAndTitle(mContext, "Selcet Address", false, R.drawable.ic_arrow);
+        binding.mToolbar.toolbar.setNavigationOnClickListener(v-> onBackPressed());
+        address.addAll(Common.getAddresses(sp));
+        checkOutModel=Common.getCheckout(sp);
+        binding.addaddress.setOnClickListener(v->{
+            Intent intent = new Intent(mContext,AddAddressActivity.class);
+            startActivity(intent);
+        });
+        binding.proceed.setOnClickListener(c->{
+            checkOutModel.setAddress(address.get(addressAdapter.mSelectedItem));
+            sp.setString(CHECKOUT, gson.toJson(checkOutModel));
+            Intent intent = new Intent(mContext, CheckoutActivity.class);
+            startActivity(intent);
+        });
     }
 
     private void setEmptyAdapter() {
@@ -47,7 +69,7 @@ public class AddressActivity extends BaseActivity {
         addressAdapter.SetOnItemClickListener(new AddressAdapter.OnItemClickListener() {
             @Override
             public void onOptionClick(View view, int itemPosition, String model) {
-
+                checkOutModel.setAddress(model);
             }
 
             @Override
@@ -60,17 +82,6 @@ public class AddressActivity extends BaseActivity {
         addressAdapter.mSelectedItem = 0;
         setAdapter();
 
-    }
-
-    private void setData() {
-        address.add("Shewrapara, Mirpur, Dhaka-1216 \nHouse no: 938 \nRoad no: 9");
-        address.add("Chatkhil, Noakhali \nHouse no: 22 \nRoad no: 7");
-        address.add("Shewrapara, Mirpur, Dhaka-1216 \nHouse no: 938 \nRoad no: 9");
-        address.add("Chatkhil, Noakhali \nHouse no: 22 \nRoad no: 7");
-        address.add("Shewrapara, Mirpur, Dhaka-1216 \nHouse no: 938 \nRoad no: 9");
-        address.add("Chatkhil, Noakhali \nHouse no: 22 \nRoad no: 7");
-        sp.setString(ADDRESS, gson.toJson(address));
-        setAdapter();
     }
 
 
