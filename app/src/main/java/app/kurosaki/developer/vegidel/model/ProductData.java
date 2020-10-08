@@ -7,12 +7,18 @@ public class ProductData implements Serializable {
     String image;
     String name;
     String price;
+    float totalQuantity;
+    float selectedQuantity;
+    int type;
     ArrayList<Variant> variants;
 
-    public ProductData(String image, String name, String price, ArrayList<Variant> variants) {
+    public ProductData(String image, String name, String price, float totalQuantity, float selectedQuantity, int type, ArrayList<Variant> variants) {
         this.image = image;
         this.name = name;
         this.price = price;
+        this.totalQuantity = totalQuantity;
+        this.selectedQuantity = selectedQuantity;
+        this.type = type;
         this.variants = variants;
     }
 
@@ -40,6 +46,30 @@ public class ProductData implements Serializable {
         this.price = price;
     }
 
+    public float getTotalQuantity() {
+        return totalQuantity;
+    }
+
+    public void setTotalQuantity(float totalQuantity) {
+        this.totalQuantity = totalQuantity;
+    }
+
+    public float getSelectedQuantity() {
+        return selectedQuantity;
+    }
+
+    public void setSelectedQuantity(float selectedQuantity) {
+        this.selectedQuantity = selectedQuantity;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
     public ArrayList<Variant> getVariants() {
         return variants;
     }
@@ -54,6 +84,9 @@ public class ProductData implements Serializable {
                 "image='" + image + '\'' +
                 ", name='" + name + '\'' +
                 ", price='" + price + '\'' +
+                ", totalQuantity=" + totalQuantity +
+                ", selectedQuantity=" + selectedQuantity +
+                ", type=" + type +
                 ", variants=" + variants +
                 '}';
     }

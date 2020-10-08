@@ -82,7 +82,7 @@
     <string name="product_detail">Product Detail</string>
     <string name="title_activity_scrolling">ScrollingActivity</string>
     <string name="action_settings">Settings</string>
-    <string name="_0">0</string>
+    <string name="_0">0.0</string>
     <string name="select_quantity">Select Quantity</string>
     <string name="add_to_cart">Add To Cart</string>
     <string name="proceed_to_checkout">Proceed To Checkout</string>
@@ -97,5 +97,11 @@
     <string name="buy">Buy</string>
     <string name="you_have_successfully_n_completed_your_payment_procedure">You have successfully completed your payment procedure</string>
     <string name="back_to_home">Back to Home</string>
-
+    <string name="totalquantity">Total Quantity</string>
+    <string name="Weightqquant">%.2f /kg</string>
+    <string name="LiterQuant">%.2f /ℓ</string>
+    <string name="DozenQuant">%.2f /dz</string>
+    <string name="symbol5">₹ %s /kg</string>
+    <string name="symbol6">₹ %s /ℓ</string>
+    <string name="symbol7">₹ %s /dz</string>
 </resources>

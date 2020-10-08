@@ -85,8 +85,8 @@ public class CheckoutActivity extends BaseActivity {
                         }
                         sp.setInt(Constants.BADGECOUNT,sp.getInt(Constants.BADGECOUNT)>=0?(Math.max(sp.getInt(Constants.BADGECOUNT) - model.getQuantity(), 0)):0);
                         cartAdapter.notifyItemRemoved(itemPosition);
-                        setAdapter();
                         invalidateOptionsMenu();
+                        setAdapter();
                     }
 
                     @Override
