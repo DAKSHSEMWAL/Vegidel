@@ -16,57 +16,76 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/productlist"
+        <ScrollView
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:visibility="gone"
+            android:fillViewport="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/mToolbar" />
+            app:layout_constraintTop_toBottomOf="@id/mToolbar">
 
-        <ImageView
-            android:id="@+id/btnCart"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_carts"
-            android:visibility="gone"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
-        <TextView
-            android:id="@+id/noproduct"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/no_products"
-            android:textAlignment="center"
-            android:gravity="center"
-            android:visibility="gone"
-            style="@style/Body214Pt"
-            android:fontFamily="@font/segoe_bold"
-            android:layout_marginTop="@dimen/_12sdp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btnCart" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:context=".ui.activities.CheckoutActivity">
 
-        <Button
-            android:id="@+id/continues"
-            style="@style/Body116Pt"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_19sdp"
-            android:layout_marginEnd="@dimen/_19sdp"
-            android:layout_marginBottom="@dimen/_37sdp"
-            android:background="@drawable/primarybutton"
-            android:fontFamily="@font/segoe"
-            android:text="@string/Continue"
-            android:textAllCaps="false"
-            android:textColor="@color/White"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/productlist"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginBottom="@dimen/_20sdp"
+                    app:layout_constraintBottom_toTopOf="@id/continues"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    />
+
+                <ImageView
+                    android:id="@+id/btnCart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_carts"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/noproduct"
+                    style="@style/Body214Pt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:fontFamily="@font/segoe_bold"
+                    android:gravity="center"
+                    android:text="@string/no_products"
+                    android:textAlignment="center"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/btnCart" />
+
+                <Button
+                    android:id="@+id/continues"
+                    style="@style/Body116Pt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_19sdp"
+                    android:layout_marginEnd="@dimen/_19sdp"
+                    android:layout_marginBottom="@dimen/_37sdp"
+                    android:background="@drawable/primarybutton"
+                    android:fontFamily="@font/segoe"
+                    android:text="@string/Continue"
+                    android:textAllCaps="false"
+                    android:textColor="@color/White"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
 
         <include
             android:id="@+id/layoutLoader"

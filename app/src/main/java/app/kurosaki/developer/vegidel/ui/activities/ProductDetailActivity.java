@@ -37,7 +37,9 @@ public class ProductDetailActivity extends BaseActivity implements View.OnClickL
     ActivityProductDetailBinding binding;
     String title, image;
     TextView textView;
-    int c = 0, co = 0, pos = 0;
+    float c = 0;
+    int co = 0;
+    int pos = 0;
     ProductData productData;
     RadioAdapter radioAdapter;
     ArrayList<CartData> cartData = new ArrayList<>();
@@ -54,13 +56,12 @@ public class ProductDetailActivity extends BaseActivity implements View.OnClickL
     @Override
     protected void onResume() {
         super.onResume();
-        c=0;
+
         cartData.clear();
-        if(Common.getCart(sp).size()!=0) {
+        if (Common.getCart(sp).size() != 0) {
             cartData.addAll(Common.getCart(sp));
         }
-        binding.content.quantity.setText(String.format(Locale.getDefault(), "%d", c));
-        binding.content.subtract.setVisibility(View.INVISIBLE);
+
         radioAdapter.mSelectedItem = 0;
         setAdapter();
         invalidateOptionsMenu();
@@ -94,10 +95,9 @@ public class ProductDetailActivity extends BaseActivity implements View.OnClickL
 
     private void initView() {
         invalidateOptionsMenu();
-        if(Common.getCart(sp).size()!=0) {
+        if (Common.getCart(sp).size() != 0) {
             cartData.addAll(Common.getCart(sp));
-        }
-        else {
+        } else {
             cartData.clear();
         }
         if (getIntent() != null) {
@@ -109,7 +109,28 @@ public class ProductDetailActivity extends BaseActivity implements View.OnClickL
             Glide.with(this).load(productData.getImage()).placeholder(R.drawable.backgrounsplash).into(binding.imageview);
             binding.collapsing.setTitle(productData.getName());
             binding.content.productname.setText(productData.getName());
-            binding.content.productprice.setText(String.format(Locale.getDefault(), getString(R.string.symbol), productData.getPrice()));
+            c = productData.getSelectedQuantity();
+            if (c > 0) {
+                binding.content.quantity.setText(String.format(Locale.getDefault(), "%.2f", c));
+                binding.content.subtract.setVisibility(View.VISIBLE);
+            } else {
+                binding.content.quantity.setText(String.format(Locale.getDefault(), "%.2f", c));
+                binding.content.subtract.setVisibility(View.INVISIBLE);
+            }
+            if(productData.getType()==1)
+            {
+                binding.content.quante.setText(String.format(Locale.getDefault(),mContext.getString(R.string.Weightqquant), productData.getTotalQuantity()));
+                binding.content.productprice.setText(String.format(Locale.getDefault(),mContext.getString(R.string.symbol5),productData.getPrice()));
+            }
+            else if(productData.getType()==2)
+            {
+                binding.content.quante.setText(String.format(Locale.getDefault(),mContext.getString(R.string.LiterQuant), productData.getTotalQuantity()));
+                binding.content.productprice.setText(String.format(Locale.getDefault(),mContext.getString(R.string.symbol6),productData.getPrice()));
+            }else if(productData.getType()==3)
+            {
+                binding.content.quante.setText(String.format(Locale.getDefault(),mContext.getString(R.string.DozenQuant), productData.getTotalQuantity()));
+                binding.content.productprice.setText(String.format(Locale.getDefault(),mContext.getString(R.string.symbol7),productData.getPrice()));
+            }
         }
         binding.toolbar.setNavigationOnClickListener(v -> {
             onBackPressed();
@@ -123,7 +144,7 @@ public class ProductDetailActivity extends BaseActivity implements View.OnClickL
         if (view == binding.content.add) {
             c = c + 1;
             binding.content.subtract.setVisibility(View.VISIBLE);
-            binding.content.quantity.setText(String.format(Locale.getDefault(), "%d", c));
+            binding.content.quantity.setText(String.format(Locale.getDefault(), "%.2f", c));
         }
         if (view == binding.content.subtract) {
             c = c - 1;
@@ -131,24 +152,23 @@ public class ProductDetailActivity extends BaseActivity implements View.OnClickL
                 c = 0;
                 binding.content.subtract.setVisibility(View.INVISIBLE);
             }
-            binding.content.quantity.setText(String.format(Locale.getDefault(), "%d", c));
+            binding.content.quantity.setText(String.format(Locale.getDefault(), "%.2f", c));
         }
         if (view == binding.btnCart) {
-            co = c + co;
+            co = (int) (c + co);
             if (co == 0) {
                 textView.setVisibility(View.INVISIBLE);
             } else {
                 textView.setVisibility(View.VISIBLE);
-                sp.setInt(BADGECOUNT,co);
+                sp.setInt(BADGECOUNT, co);
                 invalidateOptionsMenu();
             }
-            if(c!=0)
-            {
-                cartData.add(new CartData(productData,c,pos));
-                sp.setString(CART,gson.toJson(cartData));
+            if (c != 0) {
+                cartData.add(new CartData(productData, c, pos));
+                sp.setString(CART, gson.toJson(cartData));
             }
-            c=0;
-            binding.content.quantity.setText(String.format(Locale.getDefault(), "%d", c));
+            c = 0;
+            binding.content.quantity.setText(String.format(Locale.getDefault(), "%.2f", c));
         }
     }
 
@@ -166,8 +186,8 @@ public class ProductDetailActivity extends BaseActivity implements View.OnClickL
                 textView.setVisibility(View.VISIBLE);
             }
             rootView.setOnClickListener(v -> {
-                    Intent intent = new Intent(mContext, CartActivity.class);
-                    startActivity(intent);
+                Intent intent = new Intent(mContext, CartActivity.class);
+                startActivity(intent);
             });
             setCount();
         }

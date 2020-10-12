@@ -78,9 +78,17 @@ public class DairyProductActivity extends BaseActivity implements View.OnClickLi
         productsAdapter.SetOnItemClickListener(new ProductsAdapter.OnItemClickListener() {
             @Override
             public void onOptionClick(View view, int itemPosition, ProductData model) {
-                Intent intent = new Intent(mContext, ProductDetailActivity.class);
-                intent.putExtra("model", model);
-                startActivity(intent);
+                for (ProductData productData : dairyData) {
+                    if (productData.getSelectedQuantity() > 0) {
+                        cartData.add(new CartData(productData, productData.getSelectedQuantity(), 0));
+                    }
+                }
+                if (cartData != null) {
+                    sp.setString(CART, gson.toJson(cartData));
+                    Intent intent = new Intent(mContext, ProductDetailActivity.class);
+                    intent.putExtra("model", model);
+                    startActivity(intent);
+                }
             }
 
             @Override

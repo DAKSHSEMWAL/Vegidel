@@ -77,6 +77,7 @@
             android:id="@+id/btnCart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_8sdp"
             android:backgroundTint="@android:color/white"
             android:src="@drawable/ic_shopping_cart"
             app:borderWidth="0dp"

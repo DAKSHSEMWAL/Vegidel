@@ -26,7 +26,30 @@
                 android:textColor="@color/EasternBlue"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/totalquantity"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:text="@string/totalquantity"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/productname" />
 
+            <TextView
+                android:id="@+id/quante"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:layout_marginEnd="@dimen/_12sdp"
+                style="@style/Caption12Pt"
+                android:fontFamily="@font/segoe_bold"
+                android:text=""
+                android:textColor="@color/Merlot"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/totalquantity" />
             <TextView
                 android:id="@+id/selectquantity"
                 android:layout_width="wrap_content"
@@ -35,7 +58,7 @@
                 android:layout_marginTop="@dimen/_14sdp"
                 android:text="@string/select_quantity"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/productname" />
+                app:layout_constraintTop_toBottomOf="@id/quante" />
 
             <ImageView
                 android:id="@+id/subtract"
