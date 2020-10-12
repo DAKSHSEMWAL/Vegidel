@@ -2,10 +2,10 @@ package app.kurosaki.developer.vegidel.model;
 
 public class CartData {
     ProductData productData;
-    int quantity;
+    float quantity;
     int pos;
 
-    public CartData(ProductData productData, int quantity, int pos) {
+    public CartData(ProductData productData, float quantity, int pos) {
         this.productData = productData;
         this.quantity = quantity;
         this.pos = pos;
@@ -19,11 +19,11 @@ public class CartData {
         this.productData = productData;
     }
 
-    public int getQuantity() {
+    public float getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(float quantity) {
         this.quantity = quantity;
     }
 

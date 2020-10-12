@@ -53,7 +53,7 @@ public class CheckoutActivity extends BaseActivity {
         binding.subtotalamount.setText(String.format(Locale.getDefault(),getString(R.string.symbol3), checkOutModel.getTotal()));
         binding.shippingcharge.setText(String.format(Locale.getDefault(), getString(R.string.symbol4), 10));
         binding.discountamount.setText(String.format("%s%%", String.format(Locale.getDefault(), getString(R.string.symbol4), 5)));
-        int afterDiscount = checkOutModel.getTotal() - (checkOutModel.getTotal() * 10 / 100);
+        float afterDiscount = checkOutModel.getTotal() - (checkOutModel.getTotal() * 10 / 100);
         binding.totalamount.setText(String.format(Locale.getDefault(),getString(R.string.symbol3), afterDiscount));
     }
 
@@ -83,7 +83,7 @@ public class CheckoutActivity extends BaseActivity {
                         else {
                             sp.setString(CART, gson.toJson(cartData));
                         }
-                        sp.setInt(Constants.BADGECOUNT,sp.getInt(Constants.BADGECOUNT)>=0?(Math.max(sp.getInt(Constants.BADGECOUNT) - model.getQuantity(), 0)):0);
+                        sp.setInt(Constants.BADGECOUNT,sp.getInt(Constants.BADGECOUNT)>=0?(Math.max(sp.getInt(Constants.BADGECOUNT) - (int)model.getQuantity(), 0)):0);
                         cartAdapter.notifyItemRemoved(itemPosition);
                         invalidateOptionsMenu();
                         setAdapter();

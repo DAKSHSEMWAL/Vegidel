@@ -21,6 +21,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicReference;
 
 import app.kurosaki.developer.vegidel.R;
 import app.kurosaki.developer.vegidel.databinding.ItemCartitemBinding;
@@ -58,8 +59,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.SingleItemRowH
     public void onBindViewHolder(@NotNull SingleItemRowHolder holder, int i) {
 
         CartData singleItem = itemsList.get(i);
-        holder.itemRowBinding.productimage.setText(singleItem.getProductData().getName());
-        holder.itemRowBinding.quantity.setText(String.format(Locale.getDefault(), "%d", singleItem.getQuantity()));
+        holder.itemRowBinding.productname.setText(singleItem.getProductData().getName());
+        holder.itemRowBinding.quantity.setText(String.format(Locale.getDefault(), "%.2f", singleItem.getQuantity()));
         if (singleItem.getQuantity() == 0) {
             holder.itemRowBinding.subtract.setVisibility(View.INVISIBLE);
         } else {
@@ -87,16 +88,16 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.SingleItemRowH
             mItemClickListener.onDelete(holder.itemRowBinding.getRoot(), i, singleItem);
         });
 
-        AtomicInteger c = new AtomicInteger(singleItem.getQuantity());
+        AtomicReference<Float> c = new AtomicReference<>(singleItem.getQuantity());
 
         holder.itemRowBinding.add.setOnClickListener(v -> {
-            singleItem.setQuantity(c.incrementAndGet());
+            singleItem.setQuantity(c.get()+1);
             mItemClickListener.onAdd(holder.itemRowBinding.getRoot(), i, singleItem);
         });
 
         holder.itemRowBinding.subtract.setOnClickListener(v -> {
-            if (c.intValue() > 0) {
-                singleItem.setQuantity(c.decrementAndGet());
+            if (c.get() > 0) {
+                singleItem.setQuantity(c.get()-1);
             } else {
                 singleItem.setQuantity(0);
             }

@@ -21,6 +21,7 @@ import app.kurosaki.developer.vegidel.adapters.ProductsAdapter;
 import app.kurosaki.developer.vegidel.core.BaseActivity;
 import app.kurosaki.developer.vegidel.databinding.ActivityDairyProductBinding;
 import app.kurosaki.developer.vegidel.interfaces.Constants;
+import app.kurosaki.developer.vegidel.model.CartData;
 import app.kurosaki.developer.vegidel.model.ProductData;
 import app.kurosaki.developer.vegidel.utils.Common;
 
@@ -31,6 +32,7 @@ public class DairyProductActivity extends BaseActivity implements View.OnClickLi
     ArrayList<ProductData> dairyData = new ArrayList<>();
     TextView textView;
     int co;
+    ArrayList<CartData> cartData = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,7 +111,11 @@ public class DairyProductActivity extends BaseActivity implements View.OnClickLi
         binding.mToolbar.toolbar.setNavigationOnClickListener(v -> {
             onBackPressed();
         });
-
+        if (Common.getCart(sp).size() != 0) {
+            cartData.addAll(Common.getCart(sp));
+        } else {
+            cartData.clear();
+        }
     }
 
     @Override
@@ -148,11 +154,23 @@ public class DairyProductActivity extends BaseActivity implements View.OnClickLi
             }
             setCount();
             rootView.setOnClickListener(v -> {
-                Intent intent = new Intent(mContext, CartActivity.class);
-                startActivity(intent);
+                performAction();
             });
         }
         return super.onCreateOptionsMenu(menu);
+    }
+
+    private void performAction() {
+        for (ProductData productData : dairyData) {
+            if (productData.getSelectedQuantity() > 0) {
+                cartData.add(new CartData(productData, productData.getSelectedQuantity(), 0));
+            }
+        }
+        if (cartData != null) {
+            sp.setString(CART, gson.toJson(cartData));
+            Intent intent = new Intent(mContext, CartActivity.class);
+            startActivity(intent);
+        }
     }
 
     public void setCount() {

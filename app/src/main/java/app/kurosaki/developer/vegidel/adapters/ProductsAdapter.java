@@ -85,11 +85,11 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Single
 
         holder.itemRowBinding.add.setOnClickListener(v -> {
             if (c1.get() > 0) {
-                singleItem.setSelectedQuantity(c1.get()+1);
+                singleItem.setTotalQuantity(c1.get()-1);
             } else {
-                singleItem.setSelectedQuantity(0);
+                singleItem.setTotalQuantity(0);
             }
-            singleItem.setTotalQuantity(c.get()-1);
+            singleItem.setSelectedQuantity(c.get()+1);
             mItemClickListener.onAdd(holder.itemRowBinding.getRoot(), i, singleItem);
         });
 

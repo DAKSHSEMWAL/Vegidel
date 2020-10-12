@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class CheckOutModel {
 
     ArrayList<CartData> cartData;
-    int total;
+    float total;
     String Address;
 
     public CheckOutModel() {
@@ -19,11 +19,11 @@ public class CheckOutModel {
         this.cartData = cartData;
     }
 
-    public int getTotal() {
+    public float getTotal() {
         return total;
     }
 
-    public void setTotal(int total) {
+    public void setTotal(float total) {
         this.total = total;
     }
 

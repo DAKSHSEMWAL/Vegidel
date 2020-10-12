@@ -70,7 +70,7 @@ public class CartActivity extends BaseActivity {
                         else {
                             sp.setString(CART, gson.toJson(cartData));
                         }
-                        sp.setInt(Constants.BADGECOUNT,sp.getInt(Constants.BADGECOUNT)>=0?(Math.max(sp.getInt(Constants.BADGECOUNT) - model.getQuantity(), 0)):0);
+                        sp.setInt(Constants.BADGECOUNT,sp.getInt(Constants.BADGECOUNT)>=0?(Math.max(sp.getInt(Constants.BADGECOUNT) - (int)model.getQuantity(), 0)):0);
                         cartAdapter.notifyItemRemoved(itemPosition);
                         setAdapter();
                         invalidateOptionsMenu();
@@ -150,7 +150,7 @@ public class CartActivity extends BaseActivity {
         getMenuInflater().inflate(R.menu.totalamount, menu);
         MenuItem menuItem = menu.findItem(R.id.carttotal);
         FrameLayout rootView = (FrameLayout) menuItem.getActionView();
-        int total=0;
+        float total=0;
         if(cartData!=null) {
             for (CartData cartData : cartData) {
                 total = total + cartData.getQuantity() * Integer.parseInt(cartData.getProductData().getVariants().get(cartData.getPos()).getPrice());

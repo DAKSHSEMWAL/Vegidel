@@ -22,7 +22,7 @@
                 android:contentDescription="@string/imageview"
                 android:scaleType="fitXY"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/productimage"
+                app:layout_constraintEnd_toStartOf="@id/productname"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -37,7 +37,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/productimage"
+                android:id="@+id/productname"
                 style="@style/Body116Pt"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -64,7 +64,7 @@
                 android:textColor="@color/DoveGrey"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/imageview"
-                app:layout_constraintTop_toBottomOf="@id/productimage" />
+                app:layout_constraintTop_toBottomOf="@id/productname" />
 
             <TextView
                 android:id="@+id/selectquantity"
