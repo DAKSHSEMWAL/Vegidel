@@ -74,7 +74,7 @@
     <string name="symbol">₹ %s</string>
     <string name="symbol1">₹ %s / %s \n\n</string>
     <string name="symbol2">Total Price: ₹ %.2f</string>
-    <string name="symbol3">₹ %d</string>
+    <string name="symbol3">₹ %.2f</string>
     <string name="symbol4">%d</string>
     <string name="no_products">No Products</string>
     <string name="no_address">No Addresss</string>
@@ -104,4 +104,10 @@
     <string name="symbol5">₹ %s /kg</string>
     <string name="symbol6">₹ %s /ℓ</string>
     <string name="symbol7">₹ %s /dz</string>
+    <string name="capture">Capture</string>
+    <string name="upload">Upload</string>
+    <string name="camera">For using camera, you need to enable camera and storage permission.</string>
+    <string name="crop_image">Crop Image</string>
+    <string name="cropping_image">Cropping Image…</string>
+    <string name="done">Done</string>
 </resources>

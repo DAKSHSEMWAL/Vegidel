@@ -20,6 +20,7 @@ import app.kurosaki.developer.vegidel.adapters.ProductsAdapter;
 import app.kurosaki.developer.vegidel.core.BaseActivity;
 import app.kurosaki.developer.vegidel.databinding.ActivityVegetableBinding;
 import app.kurosaki.developer.vegidel.interfaces.Constants;
+import app.kurosaki.developer.vegidel.model.CartData;
 import app.kurosaki.developer.vegidel.model.ProductData;
 import app.kurosaki.developer.vegidel.utils.Common;
 
@@ -30,7 +31,7 @@ public class VegetableActivity extends BaseActivity implements View.OnClickListe
     ArrayList<ProductData> dairyData = new ArrayList<>();
     TextView textView;
     int co;
-
+    ArrayList<CartData> cartData = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -93,6 +94,7 @@ public class VegetableActivity extends BaseActivity implements View.OnClickListe
             public void onRemoved(View view, int itemPosition, ProductData model) {
                 sp.setString(CART, gson.toJson(dairyData));
                 sp.setInt(Constants.BADGECOUNT, sp.getInt(Constants.BADGECOUNT) >= 0 ? (sp.getInt(Constants.BADGECOUNT) - 1) : 0);
+                productsAdapter.notifyItemRemoved(itemPosition);
                 invalidateOptionsMenu();
                 setAdapter();
             }
@@ -108,6 +110,11 @@ public class VegetableActivity extends BaseActivity implements View.OnClickListe
         binding.mToolbar.toolbar.setNavigationOnClickListener(v -> {
             onBackPressed();
         });
+        if (Common.getCart(sp).size() != 0) {
+            cartData.addAll(Common.getCart(sp));
+        } else {
+            cartData.clear();
+        }
 
     }
 
@@ -137,23 +144,33 @@ public class VegetableActivity extends BaseActivity implements View.OnClickListe
         getMenuInflater().inflate(R.menu.cart, menu);
         MenuItem menuItem = menu.findItem(R.id.ic_group);
         FrameLayout rootView = (FrameLayout) menuItem.getActionView();
-        co=sp.getInt(BADGECOUNT);
+        co = sp.getInt(BADGECOUNT);
         if (rootView != null) {
             textView = rootView.findViewById(R.id.count);
-            if(co==0)
-            {
+            if (co == 0) {
                 textView.setVisibility(View.INVISIBLE);
-            }
-            else {
+            } else {
                 textView.setVisibility(View.VISIBLE);
             }
             setCount();
-            rootView.setOnClickListener(v->{
-                Intent intent = new Intent(mContext,CartActivity.class);
-                startActivity(intent);
+            rootView.setOnClickListener(v -> {
+                performAction();
             });
         }
         return super.onCreateOptionsMenu(menu);
+    }
+
+    private void performAction() {
+        for (ProductData productData : dairyData) {
+            if (productData.getSelectedQuantity() > 0) {
+                cartData.add(new CartData(productData, productData.getSelectedQuantity(), 0));
+            }
+        }
+        if (cartData != null) {
+            sp.setString(CART, gson.toJson(cartData));
+            Intent intent = new Intent(mContext, CartActivity.class);
+            startActivity(intent);
+        }
     }
 
     public void setCount() {

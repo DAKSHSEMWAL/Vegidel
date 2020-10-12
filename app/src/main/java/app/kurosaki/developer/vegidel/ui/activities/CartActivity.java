@@ -113,7 +113,7 @@ public class CartActivity extends BaseActivity {
 
     private void initView() {
 
-        Common.setToolbarWithBackAndTitle(mContext, "Cart", false, R.drawable.ic_arrow);
+        Common.setToolbarWithBackAndTitle(mContext, "", false, R.drawable.ic_arrow);
         binding.mToolbar.toolbar.setNavigationOnClickListener(v -> {
             onBackPressed();
         });

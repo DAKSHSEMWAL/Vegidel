@@ -133,6 +133,7 @@
                 android:fontFamily="@font/segoe"
                 android:inputType="textPostalAddress"
                 android:textColor="@color/Tundora"
+                android:maxLength="8"
                 android:textColorHint="@color/SilverChallice"
                 android:typeface="normal" />
 
@@ -159,6 +160,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/segoe"
                 android:inputType="phone"
+                android:maxLength="12"
                 android:textColor="@color/Tundora"
                 android:textColorHint="@color/SilverChallice"
                 android:typeface="normal" />

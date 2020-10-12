@@ -66,6 +66,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/segoe"
                         android:inputType="phone"
+                        android:maxLength="12"
                         android:textColor="@color/Tundora"
                         android:textColorHint="@color/SilverChallice"
                         android:typeface="normal" />
